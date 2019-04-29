@@ -8,6 +8,12 @@
               <h3>Automatic Negative Thought</h3>
             </div>
           </div>
+          <div class="row">
+            <!--Buttons-->
+          </div>
+          <div class="row">
+            <!--Forms-->
+          </div>
         </div>
       </div>
       <div class="col-12 col-md-4">
