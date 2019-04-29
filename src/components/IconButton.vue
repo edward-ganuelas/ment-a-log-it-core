@@ -1,6 +1,6 @@
 <template>
-  <button @click="clickEvent">
-    <i :class="icon"></i>{{text}}
+  <button @click="clickEvent()">
+    <i :class="icon" v-if="icon"></i>{{text}}
   </button>
 </template>
 
@@ -10,7 +10,10 @@ export default {
   props: {
     icon: String,
     text: String,
-    clickEvent: Function
+    clickEvent: {
+      type: Function,
+      required: false
+    },
   }
 }
 </script>
