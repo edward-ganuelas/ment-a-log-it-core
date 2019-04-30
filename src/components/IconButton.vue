@@ -8,8 +8,14 @@
 export default {
   name: 'IconButton',
   props: {
-    icon: String,
-    text: String,
+    icon: {
+      type: String,
+      required: false
+    },
+    text: {
+      type: String,
+      required: false
+    },
     clickEvent: {
       type: Function,
       required: false
