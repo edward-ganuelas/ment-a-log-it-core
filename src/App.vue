@@ -11,6 +11,7 @@
 <style lang="scss">
 @import "./node_modules/bootstrap/scss/bootstrap-reboot.scss";
 @import "./node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import "./node_modules/bootstrap/scss/_buttons.scss";
 @import url('https://fonts.googleapis.com/css?family=Catamaran');
 #app {
   font-family: 'Catamaran', sans-serif;

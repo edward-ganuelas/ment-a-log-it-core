@@ -1,5 +1,5 @@
 <template>
-  <button @click="clickEvent()">
+  <button class="btn" @click="clickEvent()">
     <i :class="icon" v-if="icon"></i>{{text}}
   </button>
 </template>
@@ -26,5 +26,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+.btn {
+  width: 100%;
+}
 </style>
