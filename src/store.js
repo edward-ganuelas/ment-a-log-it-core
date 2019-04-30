@@ -7,10 +7,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    AutomaticNegativeThoughts: [],
+    CognitiveErrors: [],
+    RationalAlternativeThoughts: []
   },
   mutations: {
-
+    
   },
   actions: {
 
