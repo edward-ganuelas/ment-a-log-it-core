@@ -9,7 +9,8 @@
             </div>
           </div>
           <div class="row">
-            <!--Buttons-->
+            <div class="col-6"><icon-button icon="fas fa-plus" /></div>
+            <div class="col-6"><icon-button icon="fas fa-trash" /></div>
           </div>
           <div class="row">
             <!--Forms-->
@@ -23,6 +24,10 @@
               <h3>Cognitive Error</h3>
             </div>
           </div>
+          <div class="row">
+            <div class="col-6"><icon-button icon="fas fa-plus" /></div>
+            <div class="col-6"><icon-button icon="fas fa-trash" /></div>
+          </div>
         </div>
       </div>
       <div class="col-12 col-md-4">
@@ -32,6 +37,10 @@
               <h3>Rational Alternative Thought</h3>
             </div>
           </div>
+          <div class="row">
+            <div class="col-6"><icon-button icon="fas fa-plus" /></div>
+            <div class="col-6"><icon-button icon="fas fa-trash" /></div>
+          </div>
         </div>
       </div>
     </div>
@@ -39,8 +48,12 @@
 </template>
 
 <script>
+import IconButton from '@/components/IconButton';
 export default {
   name: 'TripleColumn',
+  components: {
+    IconButton
+  },
   props: {
   }
 }
