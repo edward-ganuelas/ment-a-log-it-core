@@ -1,17 +1,17 @@
 <template>
-  <div class="home container">
-  
+  <div class="home">
+    <triple-column />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import TripleColumn from '@/components/TripleColumn.vue'
 
 export default {
   name: 'home',
   components: {
-   
+    TripleColumn
   }
 }
 </script>
