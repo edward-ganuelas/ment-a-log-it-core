@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="$emit('click')">
+  <button class="btn" @click="$emit('click')" :disabled="disabled">
     <i :class="icon" v-if="icon"></i>{{text}}
   </button>
 </template>
@@ -20,6 +20,10 @@ export default {
       type: Function,
       required: false
     },
+    disabled: {
+      type: Boolean,
+      required: false
+    }
   }
 }
 </script>
