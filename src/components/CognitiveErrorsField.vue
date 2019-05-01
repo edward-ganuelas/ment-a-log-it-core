@@ -1,5 +1,5 @@
 <template>
-  <div class="cognitive-errors">
+  <div class="cognitive-errors-field">
     <v-select :options="options" @input="emitChange"></v-select>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 import vSelect from 'vue-select'
 export default {
-  name: 'CognitiveErros',
+  name: 'CognitiveErrorsField',
   components: {
     vSelect
   },
