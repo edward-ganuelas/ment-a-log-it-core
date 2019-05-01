@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import TripleColumn from '@/components/TripleColumn.vue'
 
 export default {

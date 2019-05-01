@@ -18,17 +18,7 @@
         </div>
       </div>
       <div class="col-12 col-md-4">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <h3>Cognitive Error</h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6"><icon-button icon="fas fa-plus" /></div>
-            <div class="col-6"><icon-button icon="fas fa-trash" /></div>
-          </div>
-        </div>
+        <cognitive-errors />
       </div>
       <div class="col-12 col-md-4">
         <div class="container-fluid">
@@ -49,12 +39,17 @@
 
 <script>
 import IconButton from '@/components/IconButton';
+import CognitiveErrors from '@/components/CognitiveErrors/CognitiveErrors';
 export default {
   name: 'TripleColumn',
   components: {
-    IconButton
+    IconButton,
+    CognitiveErrors
   },
   props: {
+  },
+  methods: {
+    
   }
 }
 </script>
