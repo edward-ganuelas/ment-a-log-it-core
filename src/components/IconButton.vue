@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="clickEvent()">
+  <button class="btn" @click="$emit('click')">
     <i :class="icon" v-if="icon"></i>{{text}}
   </button>
 </template>
@@ -16,7 +16,7 @@ export default {
       type: String,
       required: false
     },
-    clickEvent: {
+    click: {
       type: Function,
       required: false
     },
