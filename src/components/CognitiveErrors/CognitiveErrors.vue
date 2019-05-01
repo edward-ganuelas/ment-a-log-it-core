@@ -7,14 +7,14 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <icon-button icon="fas fa-plus"/>
+        <icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField"/>
       </div>
       <div class="col-6">
         <icon-button icon="fas fa-trash"/>
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
+      <div class="col-12" v-if="!isCognitiveErroFieldHidden">
         <cognitive-errors-field
           :options="[{label: 'test', code: 'test'}]"
           v-on:cognitiveErrorChange="test"
@@ -33,9 +33,14 @@ export default {
     CognitiveErrorsField,
     IconButton
   },
+  data() {
+    return {
+      isCognitiveErroFieldHidden: true,
+    }
+  },
   methods: {
-    test(){
-
+    toggleCognitiveErrorField(){
+      this.isCognitiveErroFieldHidden = this.isCognitiveErroFieldHidden ? false : true;
     }
   }
 };
