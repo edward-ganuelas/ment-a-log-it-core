@@ -1,6 +1,6 @@
 <template>
-  <div class="cognitive-errors" @input="$emit('cognitiveErrorChange', value)">
-    <v-select :options="options"></v-select>
+  <div class="cognitive-errors">
+    <v-select :options="options" @input="emitChange"></v-select>
   </div>
 </template>
 
@@ -16,8 +16,12 @@ export default {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    emitChange(value) {
+      this.$emit('cognitiveErrorChange', value);
+    }
   }
-  
 }
 </script>
 
