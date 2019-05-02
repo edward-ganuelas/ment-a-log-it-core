@@ -32,6 +32,7 @@ import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsFi
 import CognitiveError from '@/components/CognitiveErrors/CognitiveError';
 import IconButton from '@/components/IconButton';
 import Options from '@/copy/CognitiveErrors';
+import _ from 'lodash';
 export default {
   name: "CognitiveErrors",
   components: {
@@ -44,7 +45,6 @@ export default {
       isCognitiveErroFieldHidden: true,
       options: Options.slice(),
       cognitiveErrors: []
-
     }
   },
   methods: {
@@ -53,6 +53,7 @@ export default {
     },
     cognitiveErrorChange(value) {
       this.cognitiveErrors.push(value);
+      this.options = _.pull(Options, value).slice();
       this.toggleCognitiveErrorField();
     }
   }
