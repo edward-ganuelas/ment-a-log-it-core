@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-12" v-if="!isCognitiveErroFieldHidden">
         <cognitive-errors-field
-          :options="[{label: 'test', code: 'test'}]"
+          :options="options"
           v-on:cognitiveErrorChange="cognitiveErrorChange"
         />
       </div>
@@ -27,6 +27,7 @@
 <script>
 import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsField';
 import IconButton from '@/components/IconButton';
+import Options from '@/copy/CognitiveErrors';
 export default {
   name: "CognitiveErrors",
   components: {
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       isCognitiveErroFieldHidden: true,
+      options: Options.slice(),
       cognitiveValues: []
 
     }
