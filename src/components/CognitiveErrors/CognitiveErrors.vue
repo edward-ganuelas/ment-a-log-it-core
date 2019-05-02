@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row" v-if="cognitiveErrors.length > 0">
-      <cognitive-error v-for="error in cognitiveErrors" :error="error" :key="error" />
+      <cognitive-error v-for="error in cognitiveErrors" :error="error" :key="error" v-on:removeError="removeError" />
     </div>
   </div>
 </template>
@@ -53,9 +53,13 @@ export default {
     },
     cognitiveErrorChange(value) {
       this.cognitiveErrors.push(value);
-      this.options = _.pull(Options, value).slice();
+      this.options = _.pull(this.options, value);
       this.toggleCognitiveErrorField();
-    }
+    },
+    removeError(value) {
+      this.cognitiveErrors = _.pull(this.cognitiveErrors.slice(), value);
+      this.options.push(value);
+    },
   }
 };
 </script>
