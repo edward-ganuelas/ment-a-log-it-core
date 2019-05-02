@@ -2,7 +2,7 @@
   <div class="container-fluid cognitive-errors">
     <div class="row">
       <div class="col-12">
-        <h3>Cognitive Error</h3>
+        <h3>{{$t("copy.cognitiveError")}}</h3>
       </div>
     </div>
     <div class="row">
