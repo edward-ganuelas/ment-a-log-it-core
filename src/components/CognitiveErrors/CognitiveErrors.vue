@@ -21,24 +21,29 @@
         />
       </div>
     </div>
+    <div class="row" v-if="cognitiveErrors.length > 0">
+      <cognitive-error v-for="error in cognitiveErrors" :error="error" :key="error" />
+    </div>
   </div>
 </template>
 
 <script>
 import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsField';
+import CognitiveError from '@/components/CognitiveErrors/CognitiveError';
 import IconButton from '@/components/IconButton';
 import Options from '@/copy/CognitiveErrors';
 export default {
   name: "CognitiveErrors",
   components: {
     CognitiveErrorsField,
+    CognitiveError,
     IconButton
   },
   data() {
     return {
       isCognitiveErroFieldHidden: true,
       options: Options.slice(),
-      cognitiveValues: []
+      cognitiveErrors: []
 
     }
   },
@@ -47,7 +52,7 @@ export default {
       this.isCognitiveErroFieldHidden = this.isCognitiveErroFieldHidden ? false : true;
     },
     cognitiveErrorChange(value) {
-      this.cognitiveValues.push(value.code);
+      this.cognitiveErrors.push(value);
       this.toggleCognitiveErrorField();
     }
   }
