@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <p>{{error}}  <icon-button icon="far fa-times-circle" @click="removeError"/></p>
+          <p>{{text}}  <icon-button icon="far fa-times-circle" @click="removeError"/></p>
         </div>
       </div>
     </div>
@@ -18,14 +18,14 @@ export default {
     IconButton
   },
   props: {
-    error : {
+    text : {
       type: String,
       required: true
     }
   },
   methods: {
-    removeError(){
-      this.$emit('removeError', this.error);
+    removeText(){
+      this.$emit('removeError', this.text);
     }
   }
 }
