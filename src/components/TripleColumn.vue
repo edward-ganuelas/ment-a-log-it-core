@@ -2,31 +2,13 @@
   <div class="triple-column container">
     <div class="row"><!--Header-->
       <div class="col-12 col-md-4">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <h3>{{$t('copy.automaticNegativeThought')}}</h3>
-            </div>
-          </div>
-        </div>
+        <h3>{{$t('copy.automaticNegativeThought')}}</h3>
       </div>
       <div class="col-12 col-md-4">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <h3>{{$t("copy.cognitiveError")}}</h3>
-            </div>
-          </div>
-        </div>
+        <h3>{{$t("copy.cognitiveError")}}</h3>
       </div>
       <div class="col-12 col-md-4">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <h3>{{$t('copy.rationalAlternativeThought')}}</h3>
-            </div>
-          </div>
-        </div>
+        <h3>{{$t('copy.rationalAlternativeThought')}}</h3>
       </div>
     </div>
     <div class="row"><!--TODO Insert Columns Here-->
