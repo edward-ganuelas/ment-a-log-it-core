@@ -12,14 +12,14 @@
       />
     </div>
     <div class="row" v-if="cognitiveErrors.length > 0">
-      <cognitive-error v-for="error in cognitiveErrors" :error="error" :key="error" v-on:removeError="removeError" />
+      <clearable-text v-for="error in cognitiveErrors" :error="error" :key="error" v-on:removeError="removeError" />
     </div>
   </div>
 </template>
 
 <script>
 import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsField';
-import CognitiveError from '@/components/CognitiveErrors/CognitiveError';
+import ClearableText from '@/components/ClearableText';
 import IconButton from '@/components/IconButton';
 import Options from '@/copy/CognitiveErrors';
 import _ from 'lodash';
@@ -27,7 +27,7 @@ export default {
   name: "CognitiveErrors",
   components: {
     CognitiveErrorsField,
-    CognitiveError,
+    ClearableText,
     IconButton
   },
   data() {
