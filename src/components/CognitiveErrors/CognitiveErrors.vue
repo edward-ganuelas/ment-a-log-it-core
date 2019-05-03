@@ -1,20 +1,15 @@
 <template>
   <div class="container-fluid cognitive-errors">
     <div class="row">
-      <div class="col-6">
-        <icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField" :disabled="!isCognitiveErroFieldHidden"/>
-      </div>
-      <div class="col-6">
-        <icon-button icon="fas fa-trash"/>
+      <div class="col-12">
+         <h3>{{$t("copy.cognitiveError")}} <icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField" :disabled="!isCognitiveErroFieldHidden"/></h3>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12" v-if="!isCognitiveErroFieldHidden">
-        <cognitive-errors-field
-          :options="options"
-          v-on:cognitiveErrorChange="cognitiveErrorChange"
-        />
-      </div>
+    <div class="col-12" v-if="!isCognitiveErroFieldHidden">
+      <cognitive-errors-field
+        :options="options"
+        v-on:cognitiveErrorChange="cognitiveErrorChange"
+      />
     </div>
     <div class="row" v-if="cognitiveErrors.length > 0">
       <cognitive-error v-for="error in cognitiveErrors" :error="error" :key="error" v-on:removeError="removeError" />
@@ -61,4 +56,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.btn{
+  width: auto;
+  display: inline-block;
+}
 </style>
