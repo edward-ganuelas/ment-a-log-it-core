@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <h3>Automatic Negative Thought</h3>
+              <h3>{{$t('copy.automaticNegativeThought')}}</h3>
             </div>
           </div>
           <div class="row">
@@ -24,7 +24,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <h3>Rational Alternative Thought</h3>
+              <h3>{{$t('copy.rationalAlternativeThought')}}</h3>
             </div>
           </div>
           <div class="row">

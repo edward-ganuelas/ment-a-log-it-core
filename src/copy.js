@@ -6,7 +6,9 @@ Vue.use(VueI18n);
 const copy = {
     en: {
         copy: {
-            cognitiveError: 'Cognitive Error'
+            automaticNegativeThought: 'Automatic Negative Thought',
+            cognitiveError: 'Cognitive Error',
+            rationalAlternativeThought: 'Rational Alternative Thought'
         }  
     }
 }
