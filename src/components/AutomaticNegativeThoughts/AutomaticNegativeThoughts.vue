@@ -1,0 +1,24 @@
+<template>
+  <div class="hello">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h3>{{$t('copy.automaticNegativeThought')}}</h3>
+        </div>
+        <div class="col-12">
+        <!--form-->
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AutomaticNegativeThoughts',
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+</style>
