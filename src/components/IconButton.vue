@@ -32,5 +32,6 @@ export default {
 <style scoped lang="scss">
 .btn {
   width: 100%;
+  display: inline-block;
 }
 </style>

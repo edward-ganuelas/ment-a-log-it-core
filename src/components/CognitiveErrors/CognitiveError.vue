@@ -2,11 +2,8 @@
   <div class="col-12">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-10">
-          <p>{{error}}</p>
-        </div>
-        <div class="col-2">
-          <icon-button icon="far fa-times-circle" @click="removeError"/>
+        <div class="col-12">
+          <p>{{error}}  <icon-button icon="far fa-times-circle" @click="removeError"/></p>
         </div>
       </div>
     </div>
@@ -37,6 +34,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 p{
-  text-align: left;
+  text-align: center;
+}
+.btn{
+  width: auto;
 }
 </style>
