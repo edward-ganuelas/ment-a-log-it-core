@@ -2,7 +2,7 @@
   <div class="container-fluid cognitive-errors">
     <div class="row">
       <div class="col-12">
-        <h3>Cognitive Error</h3>
+        <h3>{{$t("copy.cognitiveError")}}</h3>
       </div>
     </div>
     <div class="row">
@@ -16,28 +16,35 @@
     <div class="row">
       <div class="col-12" v-if="!isCognitiveErroFieldHidden">
         <cognitive-errors-field
-          :options="[{label: 'test', code: 'test'}]"
+          :options="options"
           v-on:cognitiveErrorChange="cognitiveErrorChange"
         />
       </div>
+    </div>
+    <div class="row" v-if="cognitiveErrors.length > 0">
+      <cognitive-error v-for="error in cognitiveErrors" :error="error" :key="error" v-on:removeError="removeError" />
     </div>
   </div>
 </template>
 
 <script>
 import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsField';
+import CognitiveError from '@/components/CognitiveErrors/CognitiveError';
 import IconButton from '@/components/IconButton';
+import Options from '@/copy/CognitiveErrors';
+import _ from 'lodash';
 export default {
   name: "CognitiveErrors",
   components: {
     CognitiveErrorsField,
+    CognitiveError,
     IconButton
   },
   data() {
     return {
       isCognitiveErroFieldHidden: true,
-      cognitiveValues: []
-
+      options: Options.slice(),
+      cognitiveErrors: []
     }
   },
   methods: {
@@ -45,9 +52,14 @@ export default {
       this.isCognitiveErroFieldHidden = this.isCognitiveErroFieldHidden ? false : true;
     },
     cognitiveErrorChange(value) {
-      this.cognitiveValues.push(value.code);
+      this.cognitiveErrors.push(value);
+      this.options = _.pull(this.options, value);
       this.toggleCognitiveErrorField();
-    }
+    },
+    removeError(value) {
+      this.cognitiveErrors = _.pull(this.cognitiveErrors.slice(), value);
+      this.options.push(value);
+    },
   }
 };
 </script>
