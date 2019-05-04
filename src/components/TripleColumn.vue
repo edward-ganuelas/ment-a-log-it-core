@@ -15,13 +15,11 @@
 </template>
 
 <script>
-import IconButton from "@/components/IconButton";
 import CognitiveErrors from "@/components/CognitiveErrors/CognitiveErrors";
 import AutomaticNegativeThoughts from "@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts";
 export default {
   name: "TripleColumn",
   components: {
-    IconButton,
     CognitiveErrors,
     AutomaticNegativeThoughts
   },
