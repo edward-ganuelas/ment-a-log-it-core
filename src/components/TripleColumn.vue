@@ -1,29 +1,16 @@
 <template>
 <div class="triple-column container">
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <automatic-negative-thoughts :headerText="$t('copy.automaticNegativeThought')" />
-    </div> 
-    <div class="col-12 col-md-4">
-      <cognitive-errors :headerText="$t('copy.cognitiveError')" />
-    </div>
-    <div class="col-12 col-md-4">
-      <rational-alternative-thoughts :headerText="$t('copy.rationalAlternativeThought')" />
-    </div>
-  </div>
+  <negative-thought :isFirstEntry="true" />
+  <negative-thought :isFirstEntry="false" />
 </div>
 </template>
 
 <script>
-import CognitiveErrors from '@/components/CognitiveErrors/CognitiveErrors';
-import AutomaticNegativeThoughts from '@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts';
-import RationalAlternativeThoughts from '@/components/RationalAlternativeThoughts/RationalAlternativeThoughts';
+import NegativeThought from '@/components/NegativeThought';
 export default {
   name: 'TripleColumn',
   components: {
-    CognitiveErrors,
-    AutomaticNegativeThoughts,
-    RationalAlternativeThoughts
+    NegativeThought
   },
   props: {},
   methods: {},
