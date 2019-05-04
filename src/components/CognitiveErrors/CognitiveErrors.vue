@@ -1,9 +1,7 @@
 <template>
   <div class="container-fluid cognitive-errors">
     <div class="row">
-      <div class="col-12" v-if="headerText">
-         <h3>{{headerText}}</h3>
-      </div>
+      <header-text :headerText="headerText" v-if="headerText" />
       <div class="col-12" v-if="isCognitiveErroFieldHidden">
         <div class="container-fluid">
           <div class="row">
@@ -29,13 +27,15 @@ import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsFi
 import ClearableText from '@/components/ClearableText';
 import IconButton from '@/components/IconButton';
 import Options from '@/copy/CognitiveErrors';
+import HeaderText from '@/components/HeaderText';
 import _ from 'lodash';
 export default {
   name: "CognitiveErrors",
   components: {
     CognitiveErrorsField,
     ClearableText,
-    IconButton
+    IconButton,
+    HeaderText
   },
   props: {
     headerText:{
