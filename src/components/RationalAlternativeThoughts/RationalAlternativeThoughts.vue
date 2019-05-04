@@ -3,7 +3,20 @@
       <div class="row">
         <header-text :headerText="headerText" v-if="headerText" />
         <div class="col-12" v-if="!showText">
-          <textarea rows="3" v-model="rationalAlternativeThoughts" v-on:keyup.enter="submit"></textarea>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <textarea rows="3" v-model="rationalAlternativeThoughts" v-on:keyup.enter="submit"></textarea>
+              </div>
+              <div class="col-6">
+                <icon-button icon="fas fa-check" @click="submit" />
+              </div>
+              <div class="col-6">
+                <icon-button icon="fas fa-eraser" @click="clear" />
+              </div>
+            </div>
+          </div>
+          
         </div>
          <div class="col-12" v-if="showText">
           <clearable-text :text="rationalAlternativeThoughts" v-on:removeText="removeThoughts" />
@@ -15,11 +28,13 @@
 <script>
 import ClearableText from '@/components/ClearableText';
 import HeaderText from '@/components/HeaderText';
+import IconButton from '@/components/IconButton';
 export default {
   name: 'RationalAlternativeThoughts',
   components: {
     ClearableText,
-    HeaderText
+    HeaderText,
+    IconButton
   },
   props:{
     headerText: {
@@ -35,10 +50,16 @@ export default {
   },
   methods: {
     submit() {
+      if (this.automaticNegativeThoughts == '') {
+        return;
+      }
       this.showText = true;
     },
     removeThoughts() {
       this.showText = false;
+    },
+    clear() {
+      this.automaticNegativeThoughts = '';
     }
   }
 }
