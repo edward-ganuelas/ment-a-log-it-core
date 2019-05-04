@@ -2,10 +2,10 @@
 <div class="triple-column container">
   <div class="row">
     <div class="col-12 col-md-4">
-      <automatic-negative-thoughts />
+      <automatic-negative-thoughts :headerText="$t('copy.automaticNegativeThought')" />
     </div> 
     <div class="col-12 col-md-4">
-      <cognitive-errors/>
+      <cognitive-errors :headerText="$t('copy.cognitiveError')" />
     </div>
     <div class="col-12 col-md-4">
       <h3>{{$t('copy.rationalAlternativeThought')}}</h3>
@@ -26,7 +26,7 @@ export default {
     AutomaticNegativeThoughts
   },
   props: {},
-  methods: {}
+  methods: {},
 };
 </script>
 

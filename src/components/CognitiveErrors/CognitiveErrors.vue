@@ -1,8 +1,15 @@
 <template>
   <div class="container-fluid cognitive-errors">
     <div class="row">
-      <div class="col-12">
-         <h3>{{$t("copy.cognitiveError")}} <icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField" :disabled="!isCognitiveErroFieldHidden"/></h3>
+      <div class="col-12" v-if="headerText">
+         <h3>{{headerText}}</h3>
+      </div>
+      <div class="col-12" v-if="isCognitiveErroFieldHidden">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6"><icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField" /></div>
+          </div>
+        </div>
       </div>
       <div class="col-12" v-if="!isCognitiveErroFieldHidden">
         <cognitive-errors-field
@@ -29,6 +36,12 @@ export default {
     CognitiveErrorsField,
     ClearableText,
     IconButton
+  },
+  props: {
+    headerText:{
+      type: String,
+      required: false
+    }
   },
   data() {
     return {
