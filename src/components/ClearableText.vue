@@ -5,7 +5,7 @@
 <script>
 import IconButton from '@/components/IconButton';
 export default {
-  name: 'CognitiveError',
+  name: 'ClearableText',
   components: {
     IconButton
   },

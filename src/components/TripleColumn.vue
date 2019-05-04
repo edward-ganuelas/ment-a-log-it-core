@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import CognitiveErrors from "@/components/CognitiveErrors/CognitiveErrors";
-import AutomaticNegativeThoughts from "@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts";
+import CognitiveErrors from '@/components/CognitiveErrors/CognitiveErrors';
+import AutomaticNegativeThoughts from '@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts';
 import RationalAlternativeThoughts from '@/components/RationalAlternativeThoughts/RationalAlternativeThoughts';
 export default {
-  name: "TripleColumn",
+  name: 'TripleColumn',
   components: {
     CognitiveErrors,
     AutomaticNegativeThoughts,
