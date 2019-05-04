@@ -4,15 +4,15 @@
       <div class="col-12">
          <h3>{{$t("copy.cognitiveError")}} <icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField" :disabled="!isCognitiveErroFieldHidden"/></h3>
       </div>
-    </div>
-    <div class="col-12" v-if="!isCognitiveErroFieldHidden">
-      <cognitive-errors-field
-        :options="options"
-        v-on:cognitiveErrorChange="cognitiveErrorChange"
-      />
-    </div>
-    <div class="row" v-if="cognitiveErrors.length > 0">
+      <div class="col-12" v-if="!isCognitiveErroFieldHidden">
+        <cognitive-errors-field
+          :options="options"
+          v-on:cognitiveErrorChange="cognitiveErrorChange"
+        />
+      </div>
+      <div class="col-12" v-if="cognitiveErrors.length > 0">
       <clearable-text v-for="error in cognitiveErrors" :text="error" :key="error" v-on:removeText="removeError" />
+      </div>
     </div>
   </div>
 </template>
@@ -59,5 +59,7 @@ export default {
 .btn{
   width: auto;
   display: inline-block;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 </style>

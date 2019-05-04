@@ -1,19 +1,18 @@
 <template>
-  <div class="hello">
-    <div class="container-fluid">
+    <div class="container-fluid automatic-negative-thoughts">
       <div class="row">
         <div class="col-12">
           <h3>{{$t('copy.automaticNegativeThought')}}</h3>
         </div>
         <div class="col-12" v-if="!showText">
-          <textarea rows="10" v-model="automaticNegativeThoughts" v-on:keyup.enter="submit"></textarea>
+          <textarea rows="3" v-model="automaticNegativeThoughts" v-on:keyup.enter="submit"></textarea>
+        </div>
+         <div class="col-12" v-if="showText">
+          <clearable-text :text="automaticNegativeThoughts" v-on:removeText="removeThoughts" />
         </div>
       </div>
-      <div class="row" v-if="showText">
-        <clearable-text :text="automaticNegativeThoughts" v-on:removeText="removeThoughts" />
-      </div>
+     
     </div>
-  </div>
 </template>
 
 <script>

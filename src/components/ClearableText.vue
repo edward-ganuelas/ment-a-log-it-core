@@ -1,13 +1,5 @@
 <template>
-  <div class="col-12">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <p>{{text}}  <icon-button icon="far fa-times-circle" @click="removeText"/></p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <p>{{text}}  <icon-button icon="far fa-times-circle" @click="removeText"/></p>
 </template>
 
 <script>
@@ -35,6 +27,7 @@ export default {
 <style scoped lang="scss">
 p{
   text-align: center;
+  margin-bottom: 0;
 }
 .btn{
   width: auto;
