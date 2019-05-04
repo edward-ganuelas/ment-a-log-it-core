@@ -1,6 +1,6 @@
 <template>
 <div class="triple-column container">
-  <negative-thought :isFirstEntry="true" v-for="(thought, key) in negativeThoughts" :thought="thought" v-bind:key="key" />
+  <negative-thought :isFirstEntry="true" v-for="(thought, key) in negativeThoughts" :uuid="key" v-bind:key="key" />
 </div>
 </template>
 

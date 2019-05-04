@@ -9,6 +9,15 @@
     <div class="col-12 col-md-4">
       <rational-alternative-thoughts :headerText="rationalAlternativeThoughtsHeaderText" />
     </div>
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6 col-sm-2 offset-sm-10">
+            <icon-button icon="far fa-save" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,20 +25,22 @@
 import CognitiveErrors from '@/components/CognitiveErrors/CognitiveErrors';
 import AutomaticNegativeThoughts from '@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts';
 import RationalAlternativeThoughts from '@/components/RationalAlternativeThoughts/RationalAlternativeThoughts';
+import IconButton from '@/components/IconButton';
 export default {
   name: 'NegativeThought',
   components: {
     CognitiveErrors,
     AutomaticNegativeThoughts,
-    RationalAlternativeThoughts
+    RationalAlternativeThoughts,
+    IconButton
   },
   props: {
     isFirstEntry: {
       type: Boolean,
       required: false
     },
-    thought: {
-      type: Object,
+    uuid: {
+      type: String,
       required: true
     }
   },
