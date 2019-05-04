@@ -18,7 +18,7 @@
         />
       </div>
       <div class="col-12" v-if="cognitiveErrors.length > 0">
-      <clearable-text v-for="error in cognitiveErrors" :text="error" :key="error" v-on:removeText="removeError" />
+        <clearable-text v-for="error in cognitiveErrors" :text="error" :key="error" v-on:removeText="removeError" />
       </div>
     </div>
   </div>
