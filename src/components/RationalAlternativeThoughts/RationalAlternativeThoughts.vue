@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     submit() {
-      if (this.automaticNegativeThoughts == '') {
+      if (this.rationalAlternativeThoughts == '') {
         return;
       }
       this.showText = true;
