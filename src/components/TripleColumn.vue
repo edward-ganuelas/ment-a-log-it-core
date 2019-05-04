@@ -8,7 +8,7 @@
       <cognitive-errors :headerText="$t('copy.cognitiveError')" />
     </div>
     <div class="col-12 col-md-4">
-      <h3>{{$t('copy.rationalAlternativeThought')}}</h3>
+      <rational-alternative-thoughts :headerText="$t('copy.rationalAlternativeThought')" />
     </div>
   </div>
 </div>
@@ -17,11 +17,13 @@
 <script>
 import CognitiveErrors from "@/components/CognitiveErrors/CognitiveErrors";
 import AutomaticNegativeThoughts from "@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts";
+import RationalAlternativeThoughts from '@/components/RationalAlternativeThoughts/RationalAlternativeThoughts';
 export default {
   name: "TripleColumn",
   components: {
     CognitiveErrors,
-    AutomaticNegativeThoughts
+    AutomaticNegativeThoughts,
+    RationalAlternativeThoughts
   },
   props: {},
   methods: {},
