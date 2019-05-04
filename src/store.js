@@ -7,7 +7,7 @@ import { make } from 'vuex-pathify'
 Vue.use(Vuex);
 
 const state = {
-  NegativeThoughts: [],
+  NegativeThoughts: {},
   AutomaticNegativeThoughts: [],
   CognitiveErrors: [],
   RationalAlternativeThoughts: []

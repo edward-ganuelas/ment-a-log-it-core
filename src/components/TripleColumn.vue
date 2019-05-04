@@ -1,11 +1,12 @@
 <template>
 <div class="triple-column container">
-  <negative-thought :isFirstEntry="true" v-for="thought in negativeThoughts" v-bind:key="thought" />
+  <negative-thought :isFirstEntry="true" v-for="(thought, key) in negativeThoughts" :thought="thought" v-bind:key="key" />
 </div>
 </template>
 
 <script>
 import NegativeThought from '@/components/NegativeThought';
+import uuidv4 from 'uuid/v4';
 import { sync } from 'vuex-pathify'
 export default {
   name: 'TripleColumn',
@@ -25,8 +26,8 @@ export default {
     },
   },
   beforeMount() {
-    if (this.negativeThoughts.length <=0 ) {
-      this.negativeThoughts.push(this.createTripleColumnObject());
+    if (Object.keys(this.negativeThoughts).length <=0 ) {
+      this.negativeThoughts[uuidv4()] = this.createTripleColumnObject();
     }
   }
 };

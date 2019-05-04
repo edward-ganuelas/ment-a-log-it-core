@@ -27,6 +27,10 @@ export default {
     isFirstEntry: {
       type: Boolean,
       required: false
+    },
+    thought: {
+      type: Object,
+      required: true
     }
   },
   computed: {
