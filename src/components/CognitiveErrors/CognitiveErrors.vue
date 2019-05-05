@@ -58,10 +58,12 @@ export default {
       this.cognitiveErrors.push(value);
       this.options = _.pull(this.options, value);
       this.toggleCognitiveErrorField();
+      this.$emit('save', this.cognitiveErrors);
     },
     removeError(value) {
       this.cognitiveErrors = _.pull(this.cognitiveErrors.slice(), value);
       this.options.push(value);
+      this.$emit('save', this.cognitiveErrors);
     },
   }
 };

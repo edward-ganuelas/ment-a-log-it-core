@@ -1,13 +1,13 @@
 <template>
   <div class="row negative-thought">
     <div class="col-12 col-md-4">
-      <automatic-negative-thoughts :headerText="automaticNegativeThoughtsHeaderText" />
+      <automatic-negative-thoughts :headerText="automaticNegativeThoughtsHeaderText" v-on:save="saveNegativeThoughts" />
     </div> 
     <div class="col-12 col-md-4">
-      <cognitive-errors :headerText="cognitveErrorsHeaderText" />
+      <cognitive-errors :headerText="cognitveErrorsHeaderText" v-on:save="saveCognitveErrors" />
     </div>
     <div class="col-12 col-md-4">
-      <rational-alternative-thoughts :headerText="rationalAlternativeThoughtsHeaderText" />
+      <rational-alternative-thoughts :headerText="rationalAlternativeThoughtsHeaderText" v-on:save="saveRationalThoughts" />
     </div>
     <div class="col-12">
       <div class="container-fluid">
@@ -44,6 +44,15 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      negativeThought: {
+        AutomaticNegativeThoughts: '',
+        CognitiveErrors: '',
+        RationalAlternativeThoughts: ''
+      }
+    }
+  },
   computed: {
     automaticNegativeThoughtsHeaderText() {
       if (this.isFirstEntry) {
@@ -62,6 +71,17 @@ export default {
         return this.$t('copy.rationalAlternativeThought');
       }
       return null;
+    }
+  },
+  methods: {
+    saveNegativeThoughts(value) {
+      this.negativeThought.AutomaticNegativeThoughts = value;
+    },
+    saveCognitveErrors(value) {
+      this.negativeThought.CognitiveErrors = value.join(',');
+    },
+    saveRationalThoughts(value) {
+      this.negativeThought.RationalAlternativeThoughts = value;
     }
   }
 }

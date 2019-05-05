@@ -55,12 +55,14 @@ export default {
         return;
       }
       this.showText = true;
+      this.$emit('save', this.automaticNegativeThoughts);
     },
     removeThoughts() {
       this.showText = false;
     },
     clear() {
       this.automaticNegativeThoughts = '';
+      this.$emit('save', this.automaticNegativeThoughts);
     }
   }
 }
