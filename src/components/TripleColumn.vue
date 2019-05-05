@@ -1,40 +1,54 @@
 <template>
 <div class="triple-column container">
-  <negative-thought :isFirstEntry="true" v-for="(thought, key) in negativeThoughts" :uuid="key" v-bind:key="key" v-on:save="save" />
+  <div class="row">
+    <div class="col-6 offset-6">
+      <icon-button icon="fas fa-plus" @click="add" />
+    </div>
+  </div>
+  <negative-thought :isFirstEntry="true" v-for="thought in negativeThoughts" :uuid="thought['uuid']" v-bind:key="thought['uuid']" v-on:save="save"/>
+  {{test}}
 </div>
 </template>
 
 <script>
 import NegativeThought from '@/components/NegativeThought';
 import uuidv4 from 'uuid/v4';
+import IconButton from '@/components/IconButton';
 import { sync } from 'vuex-pathify'
 export default {
   name: 'TripleColumn',
   components: {
-    NegativeThought
+    NegativeThought,
+    IconButton
+  },
+  data() {
+    return {
+      test: ''
+    }
   },
   computed: {
     negativeThoughts: sync('NegativeThoughts'),
   },
   methods: {
-    createTripleColumnObject(automaticNegativeThought = '', cognitiveErrors = '', rationalAlternativeThoughts = '') {
+    add(){
+  
+      this.negativeThoughts.push(this.createTripleColumnObject(uuidv4()));
+    },
+    createTripleColumnObject(uuid, automaticNegativeThought = '', cognitiveErrors = '', rationalAlternativeThoughts = '') {
       return {
+        uuid,
         automaticNegativeThought,
         cognitiveErrors,
         rationalAlternativeThoughts
       }
     },
     save(value) {
-      this.negativeThoughts[value.uuid] = {
-        'automaticNegativeThought': value.AutomaticNegativeThoughts,
-        'cognitiveErrors': value.CognitiveErrors,
-        'rationalAlternativeThoughts': value.RationalAlternativeThoughts
-      }
-    }
-  },
-  beforeMount() {
-    if (Object.keys(this.negativeThoughts).length <=0 ) {
-      this.negativeThoughts[uuidv4()] = this.createTripleColumnObject();
+      this.negativeThoughts = this.negativeThoughts.map((x)=>{
+        if (x['uuid'] === value['uuid']) {
+          return value
+        }
+        return x;
+      });
     }
   }
 };
