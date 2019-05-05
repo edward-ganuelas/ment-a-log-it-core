@@ -9,11 +9,14 @@
     <div class="col-12 col-md-4">
       <rational-alternative-thoughts :headerText="rationalAlternativeThoughtsHeaderText" v-on:save="saveRationalThoughts" />
     </div>
+    <div class="col-12 col-md-4 errors" v-if="errors !== ''">
+      <p>{{errors}}</p>
+    </div>
     <div class="col-12">
       <div class="container-fluid">
         <div class="row">
           <div class="col-6 col-sm-2 offset-sm-10">
-            <icon-button icon="far fa-save" />
+            <icon-button icon="far fa-save" @click="save" />
           </div>
         </div>
       </div>
@@ -50,7 +53,8 @@ export default {
         AutomaticNegativeThoughts: '',
         CognitiveErrors: '',
         RationalAlternativeThoughts: ''
-      }
+      },
+      errors: ''
     }
   },
   computed: {
@@ -82,6 +86,17 @@ export default {
     },
     saveRationalThoughts(value) {
       this.negativeThought.RationalAlternativeThoughts = value;
+    },
+    generateNegativeThoughtObject () {
+      const negativeThoughtObject = {
+        uuid: this.uuid,
+        ...this.negativeThought
+      };
+      return negativeThoughtObject;
+    },
+    save() {
+      const negativeThoughtObject = this.generateNegativeThoughtObject();
+      this.$emit('save', negativeThoughtObject);
     }
   }
 }

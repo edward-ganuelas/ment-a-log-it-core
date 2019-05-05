@@ -1,6 +1,6 @@
 <template>
 <div class="triple-column container">
-  <negative-thought :isFirstEntry="true" v-for="(thought, key) in negativeThoughts" :uuid="key" v-bind:key="key" />
+  <negative-thought :isFirstEntry="true" v-for="(thought, key) in negativeThoughts" :uuid="key" v-bind:key="key" v-on:save="save" />
 </div>
 </template>
 
@@ -24,6 +24,13 @@ export default {
         rationalAlternativeThoughts
       }
     },
+    save(value) {
+      this.negativeThoughts[value.uuid] = {
+        'automaticNegativeThought': value.AutomaticNegativeThoughts,
+        'cognitiveErrors': value.CognitiveErrors,
+        'rationalAlternativeThoughts': value.RationalAlternativeThoughts
+      }
+    }
   },
   beforeMount() {
     if (Object.keys(this.negativeThoughts).length <=0 ) {
