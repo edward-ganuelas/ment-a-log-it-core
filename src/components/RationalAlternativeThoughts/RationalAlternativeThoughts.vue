@@ -40,6 +40,10 @@ export default {
     headerText: {
       type: String,
       required: false
+    },
+    savedValue: {
+      type: String,
+      required: false
     }
   },
   data() {
@@ -60,8 +64,17 @@ export default {
       this.showText = false;
     },
     clear() {
-      this.automaticNegativeThoughts = '';
+      this.rationalAlternativeThoughts = '';
       this.$emit('save', this.rationalAlternativeThoughts);
+    },
+    parentSave() {
+      this.$emit('save', this.rationalAlternativeThoughts);
+    }
+  },
+  beforeMount() {
+    if (this.savedValue) {
+      this.rationalAlternativeThoughts = this.savedValue;
+      this.showText = true;
     }
   }
 }

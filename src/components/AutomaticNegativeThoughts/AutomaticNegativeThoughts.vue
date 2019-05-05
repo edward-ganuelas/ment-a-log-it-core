@@ -41,6 +41,10 @@ export default {
     headerText: {
       type: String,
       required: false
+    },
+    savedValue: {
+      type: String, 
+      required: false
     }
   },
   data() {
@@ -63,6 +67,15 @@ export default {
     clear() {
       this.automaticNegativeThoughts = '';
       this.$emit('save', this.automaticNegativeThoughts);
+    },
+    parentSave() {
+      this.$emit('save', this.automaticNegativeThoughts);
+    }
+  },
+  beforeMount() {
+    if (this.savedValue) {
+      this.automaticNegativeThoughts = this.savedValue;
+      this.showText = true;
     }
   }
 }

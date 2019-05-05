@@ -5,7 +5,7 @@
       <icon-button icon="fas fa-plus" @click="add" />
     </div>
   </div>
-  <negative-thought :isFirstEntry="true" v-for="thought in negativeThoughts" :uuid="thought['uuid']" v-bind:key="thought['uuid']" v-on:save="save"/>
+  <negative-thought :isFirstEntry="true" v-for="thought in negativeThoughts" :thought="thought" v-bind:key="thought['uuid']" v-on:save="save"/>
   {{test}}
 </div>
 </template>

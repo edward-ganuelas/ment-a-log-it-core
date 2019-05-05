@@ -1,13 +1,22 @@
 <template>
   <div class="row negative-thought">
     <div class="col-12 col-md-4">
-      <automatic-negative-thoughts :headerText="automaticNegativeThoughtsHeaderText" v-on:save="saveNegativeThoughts" />
+      <automatic-negative-thoughts 
+        :headerText="automaticNegativeThoughtsHeaderText" 
+        :savedValue="thought['AutomaticNegativeThoughts']" 
+        v-on:save="saveNegativeThoughts" ref="child" />
     </div> 
     <div class="col-12 col-md-4">
-      <cognitive-errors :headerText="cognitveErrorsHeaderText" v-on:save="saveCognitveErrors" />
+      <cognitive-errors 
+        :headerText="cognitveErrorsHeaderText" 
+        v-on:save="saveCognitveErrors" 
+        :savedValue="thought['CognitiveErrors']" ref="child" />
     </div>
     <div class="col-12 col-md-4">
-      <rational-alternative-thoughts :headerText="rationalAlternativeThoughtsHeaderText" v-on:save="saveRationalThoughts" />
+      <rational-alternative-thoughts 
+        :headerText="rationalAlternativeThoughtsHeaderText" 
+        :savedValue="thought['RationalAlternativeThoughts']" 
+        v-on:save="saveRationalThoughts" ref="child" />
     </div>
     <div class="col-12 col-md-4 errors" v-if="errors !== ''">
       <p>{{errors}}</p>
@@ -42,14 +51,16 @@ export default {
       type: Boolean,
       required: false
     },
-    uuid: {
-      type: String,
+    thought: {
+      type: Object,
       required: true
     }
+    
   },
   data() {
     return {
       negativeThought: {
+        uuid: this.thought['uuid'],
         AutomaticNegativeThoughts: '',
         CognitiveErrors: '',
         RationalAlternativeThoughts: ''
@@ -82,21 +93,15 @@ export default {
       this.negativeThought.AutomaticNegativeThoughts = value;
     },
     saveCognitveErrors(value) {
-      this.negativeThought.CognitiveErrors = value.join(',');
+      this.negativeThought.CognitiveErrors = value.join(', ');
     },
     saveRationalThoughts(value) {
       this.negativeThought.RationalAlternativeThoughts = value;
     },
-    generateNegativeThoughtObject () {
-      const negativeThoughtObject = {
-        uuid: this.uuid,
-        ...this.negativeThought
-      };
-      return negativeThoughtObject;
-    },
+
     save() {
-      const negativeThoughtObject = this.generateNegativeThoughtObject();
-      this.$emit('save', negativeThoughtObject);
+      this.$refs.child.parentSave();
+      this.$emit('save', this.negativeThought);
     }
   }
 }

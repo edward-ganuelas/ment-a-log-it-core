@@ -41,6 +41,10 @@ export default {
     headerText:{
       type: String,
       required: false
+    },
+    savedValue: {
+      type: String,
+      required: false
     }
   },
   data() {
@@ -65,6 +69,16 @@ export default {
       this.options.push(value);
       this.$emit('save', this.cognitiveErrors);
     },
+    parentSave() {
+      this.$emit('save', this.cognitiveErrors);
+    }
+  },
+  beforeMount() {
+    if (this.savedValue) {
+      this.cognitiveErrors = this.savedValue.split(', ');
+      this.cognitiveErrors.map(x=>_.pull(this.options, x));
+      this.isCognitiveErroFieldHidden = true;
+    }
   }
 };
 </script>
