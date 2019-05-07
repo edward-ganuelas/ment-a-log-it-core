@@ -4,19 +4,19 @@
       <automatic-negative-thoughts 
         :headerText="automaticNegativeThoughtsHeaderText" 
         :savedValue="thought['AutomaticNegativeThoughts']" 
-        v-on:save="saveNegativeThoughts" ref="child" />
+        v-on:save="saveNegativeThoughts" ref="automaticNegativeThoughts" />
     </div> 
     <div class="col-12 col-md-4">
       <cognitive-errors 
         :headerText="cognitveErrorsHeaderText" 
         v-on:save="saveCognitveErrors" 
-        :savedValue="thought['CognitiveErrors']" ref="child" />
+        :savedValue="thought['CognitiveErrors']" ref="cognitiveErrors" />
     </div>
     <div class="col-12 col-md-4">
       <rational-alternative-thoughts 
         :headerText="rationalAlternativeThoughtsHeaderText" 
         :savedValue="thought['RationalAlternativeThoughts']" 
-        v-on:save="saveRationalThoughts" ref="child" />
+        v-on:save="saveRationalThoughts" ref="rationalAlternativeThoughts" />
     </div>
     <div class="col-12 col-md-4 errors" v-if="errors !== ''">
       <p>{{errors}}</p>
@@ -100,7 +100,9 @@ export default {
     },
 
     save() {
-      this.$refs.child.parentSave();
+      this.$refs.automaticNegativeThoughts.parentSave();
+      this.$refs.cognitiveErrors.parentSave();
+      this.$refs.rationalAlternativeThoughts.parentSave();
       this.$emit('save', this.negativeThought);
     }
   }

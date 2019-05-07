@@ -68,7 +68,7 @@ export default {
       this.$emit('save', this.rationalAlternativeThoughts);
     },
     parentSave() {
-      this.$emit('save', this.rationalAlternativeThoughts);
+      this.submit();
     }
   },
   beforeMount() {

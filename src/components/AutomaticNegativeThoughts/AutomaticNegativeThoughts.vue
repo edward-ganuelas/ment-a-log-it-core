@@ -69,7 +69,7 @@ export default {
       this.$emit('save', this.automaticNegativeThoughts);
     },
     parentSave() {
-      this.$emit('save', this.automaticNegativeThoughts);
+      this.submit();
     }
   },
   beforeMount() {
