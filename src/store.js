@@ -7,10 +7,7 @@ import { make } from 'vuex-pathify'
 Vue.use(Vuex);
 
 const state = {
-  NegativeThoughts: [],
-  AutomaticNegativeThoughts: [],
-  CognitiveErrors: [],
-  RationalAlternativeThoughts: []
+  NegativeThoughts: []
 };
 
 const mutations = make.mutations(state);
