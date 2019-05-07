@@ -33,4 +33,8 @@
     }
   }
 }
+textarea{
+  border-color: #ebebeb;
+  padding: 1rem;
+}
 </style>

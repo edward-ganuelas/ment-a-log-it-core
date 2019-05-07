@@ -111,4 +111,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.negative-thought{
+  border: 1px solid #ebebeb;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+}
 </style>
