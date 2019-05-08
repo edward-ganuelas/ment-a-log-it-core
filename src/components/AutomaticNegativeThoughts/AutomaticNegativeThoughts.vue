@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <div class="row no-gutters">
               <div class="col-12 col-lg-10">
-                <textarea rows="3" v-model="automaticNegativeThoughts" v-on:keyup.enter="submit"></textarea>
+                <textarea rows="3" v-model="automaticNegativeThoughts"></textarea>
               </div>
               <div class="col-12 col-lg-2">
                 <icon-button icon="fas fa-check" @click="submit" />

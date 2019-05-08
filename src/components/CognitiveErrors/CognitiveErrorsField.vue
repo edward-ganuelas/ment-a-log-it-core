@@ -1,6 +1,6 @@
 <template>
   <div class="cognitive-errors-field">
-    <v-select :options="options" @input="emitChange"></v-select>
+    <v-select :options="options" multiple v-model="cognitiveError" @input="emitChange"></v-select>
   </div>
 </template>
 
@@ -17,9 +17,14 @@ export default {
       required: true
     }
   },
+  data() {
+    return{
+      cognitiveError: [],
+    }
+  },
   methods: {
-    emitChange(value) {
-      this.$emit('cognitiveErrorChange', value);
+    emitChange() {
+      this.$emit('cognitiveErrorChange', this.cognitiveError);
     }
   }
 }

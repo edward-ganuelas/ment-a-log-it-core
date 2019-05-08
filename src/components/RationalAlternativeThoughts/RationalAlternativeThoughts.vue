@@ -9,11 +9,11 @@
           <div class="container-fluid">
             <div class="row no-gutters">
               <div class="col-12 col-lg-10">
-                <textarea rows="3" v-model="rationalAlternativeThoughts" v-on:keyup.enter="submit"></textarea>
+                <textarea rows="3" v-model="rationalAlternativeThoughts"></textarea>
               </div>
               <div class="col-12 col-lg-2">
                 <icon-button icon="fas fa-check" @click="submit" />
-                 <icon-button icon="fas fa-eraser" @click="clear" />
+                <icon-button icon="fas fa-eraser" @click="clear" />
               </div>
             </div>
           </div>

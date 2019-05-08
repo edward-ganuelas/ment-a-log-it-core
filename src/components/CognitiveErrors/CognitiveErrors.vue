@@ -2,14 +2,7 @@
   <div class="container-fluid cognitive-errors">
     <div class="row">
       <header-text :headerText="headerText" v-if="headerText" />
-      <div class="col-12" v-if="isCognitiveErroFieldHidden">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-6"><icon-button icon="fas fa-plus" @click="toggleCognitiveErrorField" /></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12" v-if="!isCognitiveErroFieldHidden">
+      <div class="col-12">
         <cognitive-errors-field
           :options="options"
           v-on:cognitiveErrorChange="cognitiveErrorChange"
@@ -25,7 +18,6 @@
 <script>
 import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsField';
 import ClearableText from '@/components/ClearableText';
-import IconButton from '@/components/IconButton';
 import Options from '@/copy/CognitiveErrors';
 import HeaderText from '@/components/HeaderText';
 import _ from 'lodash';
@@ -34,7 +26,6 @@ export default {
   components: {
     CognitiveErrorsField,
     ClearableText,
-    IconButton,
     HeaderText
   },
   props: {
@@ -49,23 +40,18 @@ export default {
   },
   data() {
     return {
-      isCognitiveErroFieldHidden: true,
       options: Options.slice(),
       cognitiveErrors: []
     }
   },
   methods: {
-    toggleCognitiveErrorField() {
-      this.isCognitiveErroFieldHidden = this.isCognitiveErroFieldHidden ? false : true;
-    },
     cognitiveErrorChange(value) {
-      this.cognitiveErrors.push(value);
+      this.cognitiveErrors = value;
       this.options = _.pull(this.options, value);
-      this.toggleCognitiveErrorField();
       this.$emit('save', this.cognitiveErrors);
     },
     removeError(value) {
-      this.cognitiveErrors = _.pull(this.cognitiveErrors.slice(), value);
+      this.cognitiveErrors = _.pull(this.cognitiveErrors, value);
       this.options.push(value);
       this.$emit('save', this.cognitiveErrors);
     },
@@ -77,7 +63,6 @@ export default {
     if (this.savedValue) {
       this.cognitiveErrors = this.savedValue.split(', ');
       this.cognitiveErrors.map(x=>_.pull(this.options, x));
-      this.isCognitiveErroFieldHidden = true;
     }
   }
 };
