@@ -15,6 +15,10 @@ export default {
     options: {
       type: Array,
       required: true
+    },
+    savedValue: {
+      type: String,
+      required: false
     }
   },
   data() {
@@ -25,6 +29,11 @@ export default {
   methods: {
     emitChange() {
       this.$emit('cognitiveErrorChange', this.cognitiveError);
+    }
+  },
+  beforeMount() {
+    if (this.savedValue) {
+        this.cognitiveError = this.savedValue.split(', ');
     }
   }
 }

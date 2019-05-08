@@ -6,6 +6,7 @@
         <cognitive-errors-field
           :options="options"
           v-on:cognitiveErrorChange="cognitiveErrorChange"
+          :savedValue="savedValue"
         />
       </div>
       <div class="col-12" v-if="cognitiveErrors.length > 0">
