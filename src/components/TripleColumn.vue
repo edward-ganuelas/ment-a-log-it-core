@@ -1,7 +1,7 @@
 <template>
 <div class="triple-column container">
   <div class="row">
-    <div class="col-6 offset-6">
+    <div class="col-2 offset-10">
       <icon-button icon="fas fa-file-alt" @click="add" />
     </div>
   </div>

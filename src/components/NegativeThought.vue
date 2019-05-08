@@ -113,7 +113,7 @@ export default {
 <style scoped lang="scss">
 .negative-thought{
   border: 1px solid #ebebeb;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
   border-radius: 15px;
 }
 </style>
