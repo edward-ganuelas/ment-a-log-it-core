@@ -2,7 +2,7 @@
 <div class="triple-column container">
   <div class="row">
     <div class="col-6 offset-6">
-      <icon-button icon="fas fa-plus" @click="add" />
+      <icon-button icon="fas fa-file-alt" @click="add" />
     </div>
   </div>
   <negative-thought :isFirstEntry="index === 0" v-for="(thought, index) in negativeThoughts" :thought="thought" v-bind:key="thought['uuid']" v-on:save="save"/>
