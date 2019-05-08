@@ -7,15 +7,13 @@
         </div>
         <div class="col-12" v-if="!showText">
           <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
+            <div class="row no-gutters">
+              <div class="col-12 col-lg-10">
                 <textarea rows="3" v-model="rationalAlternativeThoughts" v-on:keyup.enter="submit"></textarea>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-lg-2">
                 <icon-button icon="fas fa-check" @click="submit" />
-              </div>
-              <div class="col-6">
-                <icon-button icon="fas fa-eraser" @click="clear" />
+                 <icon-button icon="fas fa-eraser" @click="clear" />
               </div>
             </div>
           </div>
