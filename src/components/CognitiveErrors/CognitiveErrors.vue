@@ -9,16 +9,12 @@
           :savedValue="savedValue"
         />
       </div>
-      <div class="col-12" v-if="cognitiveErrors.length > 0">
-        <clearable-text v-for="error in cognitiveErrors" :text="error" :key="error" v-on:removeText="removeError" />
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import CognitiveErrorsField from '@/components/CognitiveErrors/CognitiveErrorsField';
-import ClearableText from '@/components/ClearableText';
 import Options from '@/copy/CognitiveErrors';
 import HeaderText from '@/components/HeaderText';
 import _ from 'lodash';
@@ -26,7 +22,6 @@ export default {
   name: "CognitiveErrors",
   components: {
     CognitiveErrorsField,
-    ClearableText,
     HeaderText
   },
   props: {
@@ -48,12 +43,7 @@ export default {
   methods: {
     cognitiveErrorChange(value) {
       this.cognitiveErrors = value;
-      this.options = _.pull(this.options, value);
-      this.$emit('save', this.cognitiveErrors);
-    },
-    removeError(value) {
-      this.cognitiveErrors = _.pull(this.cognitiveErrors, value);
-      this.options.push(value);
+      this.options = _.pull(Options.slice(), ...this.cognitiveErrors);
       this.$emit('save', this.cognitiveErrors);
     },
     parentSave() {
