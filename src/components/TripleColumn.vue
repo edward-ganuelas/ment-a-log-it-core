@@ -40,11 +40,11 @@ export default {
       }
     },
     save(value) {
-      this.negativeThoughts = this.negativeThoughts.map((x)=>{
-        if (x['uuid'] === value['uuid']) {
+      this.negativeThoughts = this.negativeThoughts.map((thought)=>{
+        if (thought['uuid'] === value['uuid']) {
           return value
         }
-        return x;
+        return thought;
       });
     },
     deleteThought(uuid) {
