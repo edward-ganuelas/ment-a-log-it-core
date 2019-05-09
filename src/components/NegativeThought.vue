@@ -24,8 +24,11 @@
     <div class="col-12">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 col-sm-2 offset-sm-10">
+          <div class="col-6 col-sm-2 offset-sm-8">
             <icon-button icon="far fa-save" @click="save" />
+          </div>
+          <div class="col-6 col-sm-2">
+            <icon-button icon="far fa-trash-alt" @click="deleteThought" />
           </div>
         </div>
       </div>
@@ -104,6 +107,9 @@ export default {
       this.$refs.cognitiveErrors.parentSave();
       this.$refs.rationalAlternativeThoughts.parentSave();
       this.$emit('save', this.negativeThought);
+    },
+    deleteThought() {
+      this.$emit('deleteThought', this.negativeThought.uuid);
     }
   }
 }

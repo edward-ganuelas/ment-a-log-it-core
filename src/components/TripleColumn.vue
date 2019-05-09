@@ -5,7 +5,10 @@
       <icon-button icon="fas fa-file-alt" @click="add" />
     </div>
   </div>
-  <negative-thought :isFirstEntry="index === 0" v-for="(thought, index) in negativeThoughts" :thought="thought" v-bind:key="thought['uuid']" v-on:save="save"/>
+  <negative-thought :isFirstEntry="index === 0" v-for="(thought, index) in negativeThoughts" :thought="thought" 
+    v-bind:key="thought['uuid']" 
+    v-on:save="save"
+    v-on:deleteThought="deleteThought" />
 </div>
 </template>
 
@@ -43,6 +46,12 @@ export default {
         }
         return x;
       });
+    },
+    deleteThought(uuid) {
+      const result = window.confirm('Are you sure you want to delete?');
+      if (result) {
+        this.negativeThoughts = this.negativeThoughts.filter(thought => thought.uuid !== uuid);
+      }
     }
   }
 };
