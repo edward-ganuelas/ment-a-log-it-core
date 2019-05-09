@@ -20,6 +20,5 @@ export default {
 <style scoped lang="scss">
 .header-text{
   padding: 1rem;
-  border-bottom: 1px solid #ebebeb;
 }
 </style>

@@ -2,9 +2,6 @@
     <div class="container-fluid rational-alternative-thoughts">
       <div class="row">
         <header-text :headerText="headerText" v-if="headerText" />
-        <div class="col-12">
-          <span>&nbsp;</span>
-        </div>
         <div class="col-12" v-if="!showText">
           <div class="container-fluid">
             <div class="row no-gutters">
