@@ -5,6 +5,11 @@
       <icon-button icon="fas fa-file-alt" @click="add" />
     </div>
   </div>
+  <div class="row" v-if="negativeThoughts.length === 0">
+    <div class="col-12">
+      <p>{{$t('copy.initialMessage')}}</p>
+    </div>
+  </div>
   <negative-thought :isFirstEntry="index === 0" v-for="(thought, index) in negativeThoughts" :thought="thought" 
     v-bind:key="thought['uuid']" 
     v-on:save="save"
@@ -48,7 +53,7 @@ export default {
       });
     },
     deleteThought(uuid) {
-      const result = window.confirm('Are you sure you want to delete?');
+      const result = window.confirm(this.$t('copy.confirm'));
       if (result) {
         this.negativeThoughts = this.negativeThoughts.filter(thought => thought.uuid !== uuid);
       }

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import i18n from '@/copy';
+import i18n from '@/copy/copy';
 
 Vue.config.productionTip = false
 

@@ -8,7 +8,9 @@ const copy = {
         copy: {
             automaticNegativeThought: 'Automatic Negative Thoughts',
             cognitiveError: 'Cognitive Error',
-            rationalAlternativeThought: 'Rational Alternative Thoughts'
+            rationalAlternativeThought: 'Rational Alternative Thoughts',
+            confirm: 'Are you sure you want to delete?',
+            initialMessage: 'You have not logged a negative thought yet. Too begin, click the add button above.'
         }  
     }
 }
