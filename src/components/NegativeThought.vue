@@ -24,7 +24,7 @@
     <div class="col-12">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-6 col-sm-2 offset-sm-10">
+          <div class="col-12 col-sm-2 offset-sm-10">
             <icon-button icon="far fa-save" @click="save" />
           </div>
         </div>

@@ -6,7 +6,6 @@
     </div>
   </div>
   <negative-thought :isFirstEntry="index === 0" v-for="(thought, index) in negativeThoughts" :thought="thought" v-bind:key="thought['uuid']" v-on:save="save"/>
-  {{test}}
 </div>
 </template>
 
@@ -20,11 +19,6 @@ export default {
   components: {
     NegativeThought,
     IconButton
-  },
-  data() {
-    return {
-      test: ''
-    }
   },
   computed: {
     negativeThoughts: sync('NegativeThoughts'),
