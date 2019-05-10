@@ -5,12 +5,20 @@
         <div class="col-12" v-if="!showText">
           <div class="container-fluid">
             <div class="row no-gutters">
-              <div class="col-12 col-lg-10">
+              <div class="col-12 col-lg-12">
                 <textarea rows="3" v-model="rationalAlternativeThoughts"></textarea>
               </div>
-              <div class="col-12 col-lg-2">
-                <icon-button icon="fas fa-check" @click="submit" />
-                <icon-button icon="fas fa-eraser" @click="clear" />
+              <div class="col-12">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-6">
+                      <icon-button icon="fas fa-check" @click="submit" />
+                    </div>
+                    <div class="col-6">
+                       <icon-button icon="fas fa-eraser" @click="clear" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

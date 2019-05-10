@@ -1,37 +1,37 @@
 <template>
   <div class="row negative-thought">
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6 col-sm-1">
+            <icon-button icon="far fa-save" @click="save" />
+          </div>
+          <div class="col-6 col-sm-1">
+            <icon-button icon="far fa-trash-alt" @click="deleteThought" />
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-12 col-md-4">
       <automatic-negative-thoughts 
-        :headerText="automaticNegativeThoughtsHeaderText" 
+        :headerText="$t('copy.automaticNegativeThought')" 
         :savedValue="thought['AutomaticNegativeThoughts']" 
         v-on:save="saveNegativeThoughts" ref="automaticNegativeThoughts" />
     </div> 
     <div class="col-12 col-md-4">
       <cognitive-errors 
-        :headerText="cognitveErrorsHeaderText" 
+        :headerText="$t('copy.cognitiveError')" 
         v-on:save="saveCognitveErrors" 
         :savedValue="thought['CognitiveErrors']" ref="cognitiveErrors" />
     </div>
     <div class="col-12 col-md-4">
       <rational-alternative-thoughts 
-        :headerText="rationalAlternativeThoughtsHeaderText" 
+        :headerText="$t('copy.rationalAlternativeThought')" 
         :savedValue="thought['RationalAlternativeThoughts']" 
         v-on:save="saveRationalThoughts" ref="rationalAlternativeThoughts" />
     </div>
     <div class="col-12 col-md-4 errors" v-if="errors !== ''">
       <p>{{errors}}</p>
-    </div>
-    <div class="col-12">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-6 col-sm-2 offset-sm-8">
-            <icon-button icon="far fa-save" @click="save" />
-          </div>
-          <div class="col-6 col-sm-2">
-            <icon-button icon="far fa-trash-alt" @click="deleteThought" />
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -71,26 +71,6 @@ export default {
       errors: ''
     }
   },
-  computed: {
-    automaticNegativeThoughtsHeaderText() {
-      if (this.isFirstEntry) {
-        return this.$t('copy.automaticNegativeThought');
-      }
-      return null;
-    },
-    cognitveErrorsHeaderText() {
-      if (this.isFirstEntry) {
-        return this.$t('copy.cognitiveError');
-      }
-      return null;
-    },
-    rationalAlternativeThoughtsHeaderText() {
-      if (this.isFirstEntry) {
-        return this.$t('copy.rationalAlternativeThought');
-      }
-      return null;
-    }
-  },
   methods: {
     saveNegativeThoughts(value) {
       this.negativeThought.AutomaticNegativeThoughts = value;
@@ -120,6 +100,7 @@ export default {
 .negative-thought{
   border: 1px solid #ebebeb;
   margin: 1rem auto;
+  // padding-top: 40px;
   border-radius: 15px;
 }
 </style>

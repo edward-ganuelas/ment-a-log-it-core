@@ -20,5 +20,8 @@ export default {
 <style scoped lang="scss">
 .header-text{
   padding: 1rem;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 }
 </style>

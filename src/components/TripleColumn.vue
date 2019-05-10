@@ -10,7 +10,18 @@
       <p>{{$t('copy.initialMessage')}}</p>
     </div>
   </div>
-  <negative-thought :isFirstEntry="index === 0" v-for="(thought, index) in negativeThoughts" :thought="thought" 
+  <div class="row desktop-header" v-if="negativeThoughts.length > 0">
+    <div class="col-4">
+      <h3>{{$t('copy.automaticNegativeThought')}}</h3>
+    </div>
+    <div class="col-4">
+      <h3>{{$t('copy.cognitiveError')}}</h3>
+    </div>
+    <div class="col-4">
+      <h3>{{$t('copy.rationalAlternativeThought')}}</h3>
+    </div>
+  </div>
+  <negative-thought v-for="thought in negativeThoughts" :thought="thought" 
     v-bind:key="thought['uuid']" 
     v-on:save="save"
     v-on:deleteThought="deleteThought" />
@@ -67,6 +78,12 @@ export default {
 .header {
   h3 {
     margin-bottom: 0;
+  }
+}
+.desktop-header{
+  display: none;
+  @media only screen and (min-width: 768px) {
+    display: flex;
   }
 }
 </style>
