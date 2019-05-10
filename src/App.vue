@@ -36,5 +36,6 @@
 textarea{
   border-color: #ebebeb;
   padding: 1rem;
+  border-radius: 5px;
 }
 </style>
