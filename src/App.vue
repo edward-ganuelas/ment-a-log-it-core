@@ -12,9 +12,9 @@
 @import "./node_modules/bootstrap/scss/bootstrap-reboot.scss";
 @import "./node_modules/bootstrap/scss/bootstrap-grid.scss";
 @import "./node_modules/bootstrap/scss/_buttons.scss";
-@import url('https://fonts.googleapis.com/css?family=Catamaran');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 #app {
-  font-family: 'Catamaran', sans-serif;
+  font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
