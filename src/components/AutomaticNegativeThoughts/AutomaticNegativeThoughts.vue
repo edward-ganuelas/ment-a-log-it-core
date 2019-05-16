@@ -89,12 +89,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-textarea{
-  resize: none;
-  width: 100%;
-  height: 250px;
+.automatic-negative-thoughts{
+  
+  border-bottom: 1px solid #ebebeb;
+
+  textarea{
+    resize: none;
+    width: 100%;
+    height: 250px;
+  }
+  .show-text{
+    min-height: 300px;
+  }
+  @media (min-width: 768px){
+    border-bottom: none;
+  }
 }
-.show-text{
-  height: 300px;
-}
+
 </style>

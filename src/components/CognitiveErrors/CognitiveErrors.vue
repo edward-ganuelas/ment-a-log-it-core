@@ -61,10 +61,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.btn{
+.cognitive-errors{
+  border-bottom: 1px solid #ebebeb;
+  min-height: 300px;
+  padding-bottom: 16px;
+  .btn{
   width: auto;
   display: inline-block;
   padding-top: 0;
   padding-bottom: 0;
+  }
+  @media (min-width: 768px){
+    border-bottom: none;
+  }
 }
+
 </style>
