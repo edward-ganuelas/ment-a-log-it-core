@@ -42,4 +42,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 @import "vue-select/src/scss/vue-select.scss";
+.vs__dropdown-toggle{
+  border-color: #ebebeb;
+}
 </style>

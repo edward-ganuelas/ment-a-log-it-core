@@ -2,7 +2,7 @@
     <div class="container-fluid automatic-negative-thoughts">
       <div class="row">
         <header-text :headerText="headerText" v-if="headerText" />
-        <div class="col-12" v-if="!showText">
+        <div class="col-12 show-text" v-if="!showText">
           <div class="container-fluid">
             <div class="row no-gutters">
               <div class="col-12">
@@ -24,7 +24,7 @@
           </div>
          
         </div>
-         <div class="col-12" v-if="showText">
+         <div class="col-12 show-text" v-if="showText">
           <clearable-text :text="automaticNegativeThoughts" v-on:removeText="removeThoughts" />
         </div>
       </div>
@@ -92,5 +92,9 @@ export default {
 textarea{
   resize: none;
   width: 100%;
+  height: 250px;
+}
+.show-text{
+  height: 300px;
 }
 </style>
