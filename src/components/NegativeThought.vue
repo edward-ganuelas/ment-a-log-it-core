@@ -1,7 +1,7 @@
 <template>
   <div class="row negative-thought">
     <div class="col-12">
-      <div class="container-fluid">
+      <div class="container-fluid action-buttons">
         <div class="row">
           <div class="col-6 col-sm-1">
             <icon-button icon="far fa-save" @click="save" />
@@ -102,5 +102,8 @@ export default {
   margin: 1rem auto;
   // padding-top: 40px;
   border-radius: 15px;
+}
+.action-buttons {
+  padding: 18px 0 18px 0;
 }
 </style>

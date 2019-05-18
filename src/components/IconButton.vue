@@ -32,5 +32,11 @@ export default {
 <style scoped lang="scss">
 .btn {
   display: inline-block;
+  border: 1px solid #ebebeb;
+  border-radius: 20px;
+  width: 100%;
+  &:hover{
+    box-shadow: 10px 17px 18px -8px rgba(0,0,0,0.5);
+  }
 }
 </style>

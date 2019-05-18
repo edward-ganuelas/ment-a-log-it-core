@@ -31,5 +31,6 @@ p{
 }
 .btn{
   width: auto;
+  border: none;
 }
 </style>

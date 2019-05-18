@@ -38,4 +38,7 @@ textarea{
   padding: 1rem;
   border-radius: 5px;
 }
+.show-text{
+  padding-bottom: 18px;
+}
 </style>

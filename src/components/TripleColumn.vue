@@ -1,7 +1,7 @@
 <template>
 <div class="triple-column container">
-  <div class="row">
-    <div class="col-2 offset-10">
+  <div class="row top-action-button">
+    <div class="col-12 col-sm-2 offset-sm-10">
       <icon-button icon="fas fa-file-alt" @click="add" />
     </div>
   </div>
@@ -85,5 +85,8 @@ export default {
   @media only screen and (min-width: 768px) {
     display: flex;
   }
+}
+.top-action-button {
+  margin-bottom: 18px;
 }
 </style>
