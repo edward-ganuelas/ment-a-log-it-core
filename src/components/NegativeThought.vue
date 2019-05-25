@@ -12,6 +12,10 @@
         </div>
       </div>
     </div>
+    <div class="col-12 date">
+      <p>Created Date: <date-formatter :dateTime="this.thought.createDate" /></p>
+      <p>Last Modified Date: <date-formatter :dateTime="this.thought.modifiedDate" /></p>
+    </div>
     <div class="col-12 col-md-4">
       <automatic-negative-thoughts 
         :headerText="$t('copy.automaticNegativeThought')" 
@@ -41,13 +45,15 @@ import CognitiveErrors from '@/components/CognitiveErrors/CognitiveErrors';
 import AutomaticNegativeThoughts from '@/components/AutomaticNegativeThoughts/AutomaticNegativeThoughts';
 import RationalAlternativeThoughts from '@/components/RationalAlternativeThoughts/RationalAlternativeThoughts';
 import IconButton from '@/components/IconButton';
+import DateFormatter from '@/components/DateFormatter';
 export default {
   name: 'NegativeThought',
   components: {
     CognitiveErrors,
     AutomaticNegativeThoughts,
     RationalAlternativeThoughts,
-    IconButton
+    IconButton,
+    DateFormatter
   },
   props: {
     isFirstEntry: {
@@ -108,5 +114,8 @@ export default {
 }
 .action-buttons {
   padding: 18px 0 18px 0;
+}
+.date {
+  text-align: left;
 }
 </style>
