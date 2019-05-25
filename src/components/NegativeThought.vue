@@ -4,10 +4,10 @@
       <div class="container-fluid action-buttons">
         <div class="row">
           <div class="col-6 col-sm-1">
-            <icon-button icon="far fa-save" @click="save" />
+            <icon-button icon="far fa-save" @click="save" iconColor="#0066FF"/>
           </div>
           <div class="col-6 col-sm-1">
-            <icon-button icon="far fa-trash-alt" @click="deleteThought" />
+            <icon-button icon="far fa-trash-alt" @click="deleteThought" iconColor="#0066FF" />
           </div>
         </div>
       </div>
