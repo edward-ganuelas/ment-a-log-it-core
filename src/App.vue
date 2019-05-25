@@ -37,6 +37,7 @@ textarea{
   border-color: #000;
   padding: 1rem;
   border-radius: 5px;
+  margin-bottom: 18px;
 }
 .show-text{
   padding-bottom: 18px;

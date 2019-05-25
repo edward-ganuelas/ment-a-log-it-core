@@ -44,7 +44,7 @@ export default {
 .btn {
   display: inline-block;
   border: 1px solid #000;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 100%;
   &:hover{
     box-shadow: 10px 17px 18px -8px rgba(0,0,0,0.5);
