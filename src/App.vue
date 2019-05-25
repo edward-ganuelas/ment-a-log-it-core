@@ -34,7 +34,7 @@
   }
 }
 textarea{
-  border-color: #ebebeb;
+  border-color: #000;
   padding: 1rem;
   border-radius: 5px;
 }

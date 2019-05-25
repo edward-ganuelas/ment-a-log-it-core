@@ -12,10 +12,10 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-6">
-                      <icon-button icon="fas fa-check" @click="submit" />
+                      <icon-button icon="fas fa-check" @click="submit" iconColor="green" />
                     </div>
                     <div class="col-6">
-                       <icon-button icon="fas fa-eraser" @click="clear" />
+                       <icon-button icon="fas fa-eraser" @click="clear" iconColor="red" />
                     </div>
                   </div>
                 </div>

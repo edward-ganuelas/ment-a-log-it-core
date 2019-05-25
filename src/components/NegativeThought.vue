@@ -98,7 +98,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .negative-thought{
-  border: 1px solid #ebebeb;
+  border: 1px solid #000;
   margin: 1rem auto;
   // padding-top: 40px;
   border-radius: 15px;

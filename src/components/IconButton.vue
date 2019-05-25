@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="$emit('click')" :disabled="disabled">
+  <button class="btn" @click="$emit('click')" :disabled="disabled" :style="style">
     <i :class="icon" v-if="icon"></i>{{text}}
   </button>
 </template>
@@ -23,6 +23,17 @@ export default {
     disabled: {
       type: Boolean,
       required: false
+    },
+    iconColor: {
+      type: String,
+      required: false
+    }
+  },
+  computed: {
+    style() {
+      return {
+        color: this.iconColor
+      }
     }
   }
 }
@@ -32,7 +43,7 @@ export default {
 <style scoped lang="scss">
 .btn {
   display: inline-block;
-  border: 1px solid #ebebeb;
+  border: 1px solid #000;
   border-radius: 20px;
   width: 100%;
   &:hover{

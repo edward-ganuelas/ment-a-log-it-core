@@ -2,7 +2,7 @@
 <div class="triple-column container">
   <div class="row top-action-button">
     <div class="col-12 col-sm-2 offset-sm-10">
-      <icon-button icon="fas fa-file-alt" @click="add" />
+      <icon-button icon="fas fa-file-alt" @click="add" iconColor="#0066FF" />
     </div>
   </div>
   <div class="row" v-if="negativeThoughts.length === 0">

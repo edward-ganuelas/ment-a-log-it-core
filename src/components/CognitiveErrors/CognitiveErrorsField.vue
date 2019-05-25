@@ -43,6 +43,6 @@ export default {
 <style lang="scss">
 @import "vue-select/src/scss/vue-select.scss";
 .vs__dropdown-toggle{
-  border-color: #ebebeb;
+  border-color: #000;
 }
 </style>
