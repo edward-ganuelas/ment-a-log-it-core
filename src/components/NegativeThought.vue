@@ -64,6 +64,8 @@ export default {
     return {
       negativeThought: {
         uuid: this.thought['uuid'],
+        createDate: this.thought.createDate,
+        modifiedDate: this.thought.modifiedDate,
         AutomaticNegativeThoughts: '',
         CognitiveErrors: '',
         RationalAlternativeThoughts: ''
@@ -86,6 +88,7 @@ export default {
       this.$refs.automaticNegativeThoughts.parentSave();
       this.$refs.cognitiveErrors.parentSave();
       this.$refs.rationalAlternativeThoughts.parentSave();
+      this.negativeThought.modifiedDate = Date.now();
       this.$emit('save', this.negativeThought);
     },
     deleteThought() {

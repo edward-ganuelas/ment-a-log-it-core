@@ -44,12 +44,14 @@ export default {
   },
   methods: {
     add(){
-  
-      this.negativeThoughts.push(this.createTripleColumnObject(uuidv4()));
+      const date = Date.now();
+      this.negativeThoughts.push(this.createTripleColumnObject(uuidv4(), date));
     },
-    createTripleColumnObject(uuid, automaticNegativeThought = '', cognitiveErrors = '', rationalAlternativeThoughts = '') {
+    createTripleColumnObject(uuid, date, automaticNegativeThought = '', cognitiveErrors = '', rationalAlternativeThoughts = '') {
       return {
         uuid,
+        createDate: date,
+        modifiedDate: date,
         automaticNegativeThought,
         cognitiveErrors,
         rationalAlternativeThoughts
