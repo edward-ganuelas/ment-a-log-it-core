@@ -1,17 +1,5 @@
 <template>
   <div class="row negative-thought">
-    <div class="col-12">
-      <div class="container-fluid action-buttons">
-        <div class="row">
-          <div class="col-6 col-sm-1">
-            <icon-button icon="far fa-save" @click="save" iconColor="#0066FF"/>
-          </div>
-          <div class="col-6 col-sm-1">
-            <icon-button icon="far fa-trash-alt" @click="deleteThought" iconColor="#0066FF" />
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="col-12 date">
       <p>Created Date: <date-formatter :dateTime="this.thought.createDate" /></p>
       <p>Last Modified Date: <date-formatter :dateTime="this.thought.modifiedDate" /></p>
@@ -36,6 +24,18 @@
     </div>
     <div class="col-12 col-md-4 errors" v-if="errors !== ''">
       <p>{{errors}}</p>
+    </div>
+    <div class="col-12">
+      <div class="container-fluid action-buttons">
+        <div class="row">
+          <div class="col-6 col-sm-1 offset-sm-10">
+            <icon-button icon="far fa-save" @click="save" iconColor="#0066FF"/>
+          </div>
+          <div class="col-6 col-sm-1">
+            <icon-button icon="far fa-trash-alt" @click="deleteThought" iconColor="#0066FF" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -117,5 +117,6 @@ export default {
 }
 .date {
   text-align: left;
+  margin-top: 24px;
 }
 </style>
