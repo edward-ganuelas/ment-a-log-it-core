@@ -7,7 +7,16 @@
     <router-view/>
   </div>
 </template>
+<script>
+import darkMode from './darkmode';
 
+export default {
+  mounted() {
+    darkMode.showWidget();
+  }
+}
+
+</script>
 <style lang="scss">
 @import "./node_modules/bootstrap/scss/bootstrap-reboot.scss";
 @import "./node_modules/bootstrap/scss/bootstrap-grid.scss";
@@ -41,5 +50,27 @@ textarea{
 }
 .show-text{
   padding-bottom: 18px;
+}
+.darkmode--activated  {
+  p, h3, .vs__actions {
+    color: #FFF;
+  }
+  #nav {
+    a {
+      color: #FFF;
+      &.router-link-exact-active {
+        color: #0066ff;
+      }
+    }
+  }
+  textarea, .vs__dropdown-toggle, .vs__dropdown-menu, .vs__dropdown-option {
+      background-color: #484848;
+      color: #FFF;
+  }
+  
+  .vs__actions svg {
+    fill: #FFF;
+  }
+  
 }
 </style>

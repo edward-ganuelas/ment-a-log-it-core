@@ -50,4 +50,7 @@ export default {
     box-shadow: 10px 17px 18px -8px rgba(0,0,0,0.5);
   }
 }
+.darkmode--activated .btn{
+  background-color: #484848;
+}
 </style>
