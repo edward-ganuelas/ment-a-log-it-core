@@ -7,35 +7,35 @@
 <script>
 import vSelect from 'vue-select'
 export default {
-  name: 'CognitiveErrorsField',
-  components: {
-    vSelect
-  },
-  props: {
-    options: {
-      type: Array,
-      required: true
+    name: 'CognitiveErrorsField',
+    components: {
+        vSelect
     },
-    savedValue: {
-      type: String,
-      required: false
+    props: {
+        options: {
+            type: Array,
+            required: true
+        },
+        savedValue: {
+            type: String,
+            required: false
+        }
+    },
+    data() {
+        return{
+            cognitiveError: [],
+        }
+    },
+    methods: {
+        emitChange() {
+            this.$emit('cognitiveErrorChange', this.cognitiveError);
+        }
+    },
+    beforeMount() {
+        if (this.savedValue) {
+            this.cognitiveError = this.savedValue.split(', ');
+        }
     }
-  },
-  data() {
-    return{
-      cognitiveError: [],
-    }
-  },
-  methods: {
-    emitChange() {
-      this.$emit('cognitiveErrorChange', this.cognitiveError);
-    }
-  },
-  beforeMount() {
-    if (this.savedValue) {
-        this.cognitiveError = this.savedValue.split(', ');
-    }
-  }
 }
 </script>
 

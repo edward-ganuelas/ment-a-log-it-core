@@ -37,53 +37,53 @@ import ClearableText from '@/components/ClearableText';
 import HeaderText from '@/components/HeaderText';
 import IconButton from '@/components/IconButton';
 export default {
-  name: 'AutomaticNegativeThoughts',
-  components: {
-    ClearableText,
-    HeaderText,
-    IconButton
-  },
-  props:{
-    headerText: {
-      type: String,
-      required: false
+    name: 'AutomaticNegativeThoughts',
+    components: {
+        ClearableText,
+        HeaderText,
+        IconButton
     },
-    savedValue: {
-      type: String, 
-      required: false
-    }
-  },
-  data() {
-    return {
-      automaticNegativeThoughts: '',
-      showText: false,
-    }
-  },
-  methods: {
-    submit() {
-      if (this.automaticNegativeThoughts == '') {
-        return;
-      }
-      this.showText = true;
-      this.$emit('save', this.automaticNegativeThoughts);
+    props:{
+        headerText: {
+            type: String,
+            required: false
+        },
+        savedValue: {
+            type: String, 
+            required: false
+        }
     },
-    removeThoughts() {
-      this.showText = false;
+    data() {
+        return {
+            automaticNegativeThoughts: '',
+            showText: false,
+        }
     },
-    clear() {
-      this.automaticNegativeThoughts = '';
-      this.$emit('save', this.automaticNegativeThoughts);
+    methods: {
+        submit() {
+            if (this.automaticNegativeThoughts == '') {
+                return;
+            }
+            this.showText = true;
+            this.$emit('save', this.automaticNegativeThoughts);
+        },
+        removeThoughts() {
+            this.showText = false;
+        },
+        clear() {
+            this.automaticNegativeThoughts = '';
+            this.$emit('save', this.automaticNegativeThoughts);
+        },
+        parentSave() {
+            this.submit();
+        }
     },
-    parentSave() {
-      this.submit();
+    beforeMount() {
+        if (this.savedValue) {
+            this.automaticNegativeThoughts = this.savedValue;
+            this.showText = true;
+        }
     }
-  },
-  beforeMount() {
-    if (this.savedValue) {
-      this.automaticNegativeThoughts = this.savedValue;
-      this.showText = true;
-    }
-  }
 }
 </script>
 

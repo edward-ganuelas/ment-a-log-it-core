@@ -6,36 +6,36 @@
 
 <script>
 export default {
-  name: 'IconButton',
-  props: {
-    icon: {
-      type: String,
-      required: false
+    name: 'IconButton',
+    props: {
+        icon: {
+            type: String,
+            required: false
+        },
+        text: {
+            type: String,
+            required: false
+        },
+        click: {
+            type: Function,
+            required: false
+        },
+        disabled: {
+            type: Boolean,
+            required: false
+        },
+        iconColor: {
+            type: String,
+            required: false
+        }
     },
-    text: {
-      type: String,
-      required: false
-    },
-    click: {
-      type: Function,
-      required: false
-    },
-    disabled: {
-      type: Boolean,
-      required: false
-    },
-    iconColor: {
-      type: String,
-      required: false
+    computed: {
+        style() {
+            return {
+                color: this.iconColor
+            }
+        }
     }
-  },
-  computed: {
-    style() {
-      return {
-        color: this.iconColor
-      }
-    }
-  }
 }
 </script>
 

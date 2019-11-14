@@ -8,9 +8,9 @@
 import TripleColumn from '@/components/TripleColumn.vue'
 
 export default {
-  name: 'home',
-  components: {
-    TripleColumn
-  }
+    name: 'home',
+    components: {
+        TripleColumn
+    }
 }
 </script>

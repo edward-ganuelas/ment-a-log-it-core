@@ -6,13 +6,13 @@
 
 <script>
 export default {
-  name: 'HeaderText',
-  props: {
-    headerText: {
-      type: String,
-      required: true
+    name: 'HeaderText',
+    props: {
+        headerText: {
+            type: String,
+            required: true
+        }
     }
-  }
 }
 </script>
 

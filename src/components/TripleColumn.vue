@@ -34,44 +34,44 @@ import uuidv4 from 'uuid/v4';
 import IconButton from '@/components/IconButton';
 import { sync } from 'vuex-pathify'
 export default {
-  name: 'TripleColumn',
-  components: {
-    NegativeThought,
-    IconButton
-  },
-  computed: {
-    negativeThoughts: sync('NegativeThoughts'),
-  },
-  methods: {
-    add(){
-      const date = Date.now();
-      this.negativeThoughts.push(this.createTripleColumnObject(uuidv4(), date));
+    name: 'TripleColumn',
+    components: {
+        NegativeThought,
+        IconButton
     },
-    createTripleColumnObject(uuid, date, automaticNegativeThought = '', cognitiveErrors = '', rationalAlternativeThoughts = '') {
-      return {
-        uuid,
-        createDate: date,
-        modifiedDate: date,
-        automaticNegativeThought,
-        cognitiveErrors,
-        rationalAlternativeThoughts
-      }
+    computed: {
+        negativeThoughts: sync('NegativeThoughts'),
     },
-    save(value) {
-      this.negativeThoughts = this.negativeThoughts.map((thought)=>{
-        if (thought['uuid'] === value['uuid']) {
-          return value
+    methods: {
+        add(){
+            const date = Date.now();
+            this.negativeThoughts.push(this.createTripleColumnObject(uuidv4(), date));
+        },
+        createTripleColumnObject(uuid, date, automaticNegativeThought = '', cognitiveErrors = '', rationalAlternativeThoughts = '') {
+            return {
+                uuid,
+                createDate: date,
+                modifiedDate: date,
+                automaticNegativeThought,
+                cognitiveErrors,
+                rationalAlternativeThoughts
+            }
+        },
+        save(value) {
+            this.negativeThoughts = this.negativeThoughts.map((thought)=>{
+                if (thought['uuid'] === value['uuid']) {
+                    return value
+                }
+                return thought;
+            });
+        },
+        deleteThought(uuid) {
+            const result = window.confirm(this.$t('copy.confirm'));
+            if (result) {
+                this.negativeThoughts = this.negativeThoughts.filter(thought => thought.uuid !== uuid);
+            }
         }
-        return thought;
-      });
-    },
-    deleteThought(uuid) {
-      const result = window.confirm(this.$t('copy.confirm'));
-      if (result) {
-        this.negativeThoughts = this.negativeThoughts.filter(thought => thought.uuid !== uuid);
-      }
     }
-  }
 };
 </script>
 

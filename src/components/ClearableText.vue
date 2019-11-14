@@ -5,21 +5,21 @@
 <script>
 import IconButton from '@/components/IconButton';
 export default {
-  name: 'ClearableText',
-  components: {
-    IconButton
-  },
-  props: {
-    text : {
-      type: String,
-      required: true
+    name: 'ClearableText',
+    components: {
+        IconButton
+    },
+    props: {
+        text : {
+            type: String,
+            required: true
+        }
+    },
+    methods: {
+        removeText(){
+            this.$emit('removeText', this.text);
+        }
     }
-  },
-  methods: {
-    removeText(){
-      this.$emit('removeText', this.text);
-    }
-  }
 }
 </script>
 

@@ -47,60 +47,60 @@ import RationalAlternativeThoughts from '@/components/RationalAlternativeThought
 import IconButton from '@/components/IconButton';
 import DateFormatter from '@/components/DateFormatter';
 export default {
-  name: 'NegativeThought',
-  components: {
-    CognitiveErrors,
-    AutomaticNegativeThoughts,
-    RationalAlternativeThoughts,
-    IconButton,
-    DateFormatter
-  },
-  props: {
-    isFirstEntry: {
-      type: Boolean,
-      required: false
+    name: 'NegativeThought',
+    components: {
+        CognitiveErrors,
+        AutomaticNegativeThoughts,
+        RationalAlternativeThoughts,
+        IconButton,
+        DateFormatter
     },
-    thought: {
-      type: Object,
-      required: true
-    }
+    props: {
+        isFirstEntry: {
+            type: Boolean,
+            required: false
+        },
+        thought: {
+            type: Object,
+            required: true
+        }
     
-  },
-  data() {
-    return {
-      negativeThought: {
-        uuid: this.thought['uuid'],
-        createDate: this.thought.createDate,
-        modifiedDate: this.thought.modifiedDate,
-        AutomaticNegativeThoughts: '',
-        CognitiveErrors: '',
-        RationalAlternativeThoughts: ''
-      },
-      errors: ''
-    }
-  },
-  methods: {
-    saveNegativeThoughts(value) {
-      this.negativeThought.AutomaticNegativeThoughts = value;
     },
-    saveCognitveErrors(value) {
-      this.negativeThought.CognitiveErrors = value.join(', ');
+    data() {
+        return {
+            negativeThought: {
+                uuid: this.thought['uuid'],
+                createDate: this.thought.createDate,
+                modifiedDate: this.thought.modifiedDate,
+                AutomaticNegativeThoughts: '',
+                CognitiveErrors: '',
+                RationalAlternativeThoughts: ''
+            },
+            errors: ''
+        }
     },
-    saveRationalThoughts(value) {
-      this.negativeThought.RationalAlternativeThoughts = value;
-    },
+    methods: {
+        saveNegativeThoughts(value) {
+            this.negativeThought.AutomaticNegativeThoughts = value;
+        },
+        saveCognitveErrors(value) {
+            this.negativeThought.CognitiveErrors = value.join(', ');
+        },
+        saveRationalThoughts(value) {
+            this.negativeThought.RationalAlternativeThoughts = value;
+        },
 
-    save() {
-      this.$refs.automaticNegativeThoughts.parentSave();
-      this.$refs.cognitiveErrors.parentSave();
-      this.$refs.rationalAlternativeThoughts.parentSave();
-      this.negativeThought.modifiedDate = Date.now();
-      this.$emit('save', this.negativeThought);
-    },
-    deleteThought() {
-      this.$emit('deleteThought', this.negativeThought.uuid);
+        save() {
+            this.$refs.automaticNegativeThoughts.parentSave();
+            this.$refs.cognitiveErrors.parentSave();
+            this.$refs.rationalAlternativeThoughts.parentSave();
+            this.negativeThought.modifiedDate = Date.now();
+            this.$emit('save', this.negativeThought);
+        },
+        deleteThought() {
+            this.$emit('deleteThought', this.negativeThought.uuid);
+        }
     }
-  }
 }
 </script>
 

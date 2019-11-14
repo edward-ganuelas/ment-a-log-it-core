@@ -19,43 +19,43 @@ import Options from '@/copy/CognitiveErrors';
 import HeaderText from '@/components/HeaderText';
 import _ from 'lodash';
 export default {
-  name: "CognitiveErrors",
-  components: {
-    CognitiveErrorsField,
-    HeaderText
-  },
-  props: {
-    headerText:{
-      type: String,
-      required: false
+    name: "CognitiveErrors",
+    components: {
+        CognitiveErrorsField,
+        HeaderText
     },
-    savedValue: {
-      type: String,
-      required: false
-    }
-  },
-  data() {
-    return {
-      options: Options.slice(),
-      cognitiveErrors: []
-    }
-  },
-  methods: {
-    cognitiveErrorChange(value) {
-      this.cognitiveErrors = value;
-      this.options = _.pull(Options.slice(), ...this.cognitiveErrors);
-      this.$emit('save', this.cognitiveErrors);
+    props: {
+        headerText:{
+            type: String,
+            required: false
+        },
+        savedValue: {
+            type: String,
+            required: false
+        }
     },
-    parentSave() {
-      this.$emit('save', this.cognitiveErrors);
+    data() {
+        return {
+            options: Options.slice(),
+            cognitiveErrors: []
+        }
+    },
+    methods: {
+        cognitiveErrorChange(value) {
+            this.cognitiveErrors = value;
+            this.options = _.pull(Options.slice(), ...this.cognitiveErrors);
+            this.$emit('save', this.cognitiveErrors);
+        },
+        parentSave() {
+            this.$emit('save', this.cognitiveErrors);
+        }
+    },
+    beforeMount() {
+        if (this.savedValue) {
+            this.cognitiveErrors = this.savedValue.split(', ');
+            this.cognitiveErrors.map(x=>_.pull(this.options, x));
+        }
     }
-  },
-  beforeMount() {
-    if (this.savedValue) {
-      this.cognitiveErrors = this.savedValue.split(', ');
-      this.cognitiveErrors.map(x=>_.pull(this.options, x));
-    }
-  }
 };
 </script>
 

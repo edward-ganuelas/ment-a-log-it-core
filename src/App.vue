@@ -11,9 +11,9 @@
 import darkMode from './darkmode';
 
 export default {
-  mounted() {
-    darkMode.showWidget();
-  }
+    mounted() {
+        darkMode.showWidget();
+    }
 }
 
 </script>

@@ -36,53 +36,53 @@ import ClearableText from '@/components/ClearableText';
 import HeaderText from '@/components/HeaderText';
 import IconButton from '@/components/IconButton';
 export default {
-  name: 'RationalAlternativeThoughts',
-  components: {
-    ClearableText,
-    HeaderText,
-    IconButton
-  },
-  props:{
-    headerText: {
-      type: String,
-      required: false
+    name: 'RationalAlternativeThoughts',
+    components: {
+        ClearableText,
+        HeaderText,
+        IconButton
     },
-    savedValue: {
-      type: String,
-      required: false
-    }
-  },
-  data() {
-    return {
-      rationalAlternativeThoughts: '',
-      showText: false,
-    }
-  },
-  methods: {
-    submit() {
-      if (this.rationalAlternativeThoughts == '') {
-        return;
-      }
-      this.showText = true;
-      this.$emit('save', this.rationalAlternativeThoughts);
+    props:{
+        headerText: {
+            type: String,
+            required: false
+        },
+        savedValue: {
+            type: String,
+            required: false
+        }
     },
-    removeThoughts() {
-      this.showText = false;
+    data() {
+        return {
+            rationalAlternativeThoughts: '',
+            showText: false,
+        }
     },
-    clear() {
-      this.rationalAlternativeThoughts = '';
-      this.$emit('save', this.rationalAlternativeThoughts);
+    methods: {
+        submit() {
+            if (this.rationalAlternativeThoughts == '') {
+                return;
+            }
+            this.showText = true;
+            this.$emit('save', this.rationalAlternativeThoughts);
+        },
+        removeThoughts() {
+            this.showText = false;
+        },
+        clear() {
+            this.rationalAlternativeThoughts = '';
+            this.$emit('save', this.rationalAlternativeThoughts);
+        },
+        parentSave() {
+            this.submit();
+        }
     },
-    parentSave() {
-      this.submit();
+    beforeMount() {
+        if (this.savedValue) {
+            this.rationalAlternativeThoughts = this.savedValue;
+            this.showText = true;
+        }
     }
-  },
-  beforeMount() {
-    if (this.savedValue) {
-      this.rationalAlternativeThoughts = this.savedValue;
-      this.showText = true;
-    }
-  }
 }
 </script>
 

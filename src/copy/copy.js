@@ -18,6 +18,6 @@ const copy = {
 const i18n = new VueI18n({
     locale: 'en', // set locale
     messages: copy,
-  })
+})
 
 export default i18n;

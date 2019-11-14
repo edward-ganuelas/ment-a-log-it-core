@@ -7,7 +7,7 @@ import { make } from 'vuex-pathify'
 Vue.use(Vuex);
 
 const state = {
-  NegativeThoughts: []
+    NegativeThoughts: []
 };
 
 const mutations = make.mutations(state);
@@ -17,9 +17,9 @@ const actions = make.actions(state);
 const getters = make.getters(state);
 
 export default new Vuex.Store({
-  state,
-  mutations,
-  actions,
-  getters,
-  plugins: [createPersistedState(), pathify.plugin]
+    state,
+    mutations,
+    actions,
+    getters,
+    plugins: [createPersistedState(), pathify.plugin]
 })
