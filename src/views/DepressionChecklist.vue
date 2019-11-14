@@ -10,46 +10,46 @@
               <h4>Thoughts and Feelings</h4>
           </div>
           <div class="col-12">
-              <p>Feeling sad or down in the dumps: <symptoms-select /></p>
-              <p>Feeling unhappy or blue: <symptoms-select /></p>
-              <p>Crying spells or tearfulness: <symptoms-select /></p>
-              <p>Feeling discouraged: <symptoms-select /></p>
-              <p>Feeling hopeless: <symptoms-select /></p>
-              <p>Low self-esteem: <symptoms-select /></p>
-              <p>Feeling worthless or inadequate: <symptoms-select /></p>
-              <p>Guilt or shame: <symptoms-select /></p>
-              <p>Criticizing yourself or blaming yourself: <symptoms-select /></p>
-              <p>Difficulty making decisions: <symptoms-select /></p>
+              <p>Feeling sad or down in the dumps: <symptoms-select @change="mutateTotal" /></p>
+              <p>Feeling unhappy or blue: <symptoms-select @change="mutateTotal" /></p>
+              <p>Crying spells or tearfulness: <symptoms-select @change="mutateTotal" /></p>
+              <p>Feeling discouraged: <symptoms-select @change="mutateTotal" /></p>
+              <p>Feeling hopeless: <symptoms-select @change="mutateTotal" /></p>
+              <p>Low self-esteem: <symptoms-select @change="mutateTotal" /></p>
+              <p>Feeling worthless or inadequate: <symptoms-select @change="mutateTotal" /></p>
+              <p>Guilt or shame: <symptoms-select @change="mutateTotal" /></p>
+              <p>Criticizing yourself or blaming yourself: <symptoms-select @change="mutateTotal" /></p>
+              <p>Difficulty making decisions: <symptoms-select @change="mutateTotal" /></p>
           </div>
           <div class="col-12">
               <h4>Activities and Personal Relationships</h4>
           </div>
           <div class="col-12">
-              <p>Loss of interest in family, friends, or colleagues: <symptoms-select /></p>
-              <p>Loneliness: <symptoms-select /></p>
-              <p>Spending less time with family or friends: <symptoms-select /></p>
-              <p>Loss of motivation: <symptoms-select /></p>
-              <p>Loss of interest in work or other activities: <symptoms-select /></p>
-              <p>Avoiding work or other activities: <symptoms-select /></p>
-              <p>Loss of pleasure or satisfaction in life: <symptoms-select /></p>
+              <p>Loss of interest in family, friends, or colleagues: <symptoms-select @change="mutateTotal" /></p>
+              <p>Loneliness: <symptoms-select @change="mutateTotal" /></p>
+              <p>Spending less time with family or friends: <symptoms-select @change="mutateTotal" /></p>
+              <p>Loss of motivation: <symptoms-select @change="mutateTotal" /></p>
+              <p>Loss of interest in work or other activities: <symptoms-select @change="mutateTotal" /></p>
+              <p>Avoiding work or other activities: <symptoms-select @change="mutateTotal" /></p>
+              <p>Loss of pleasure or satisfaction in life: <symptoms-select @change="mutateTotal" /></p>
           </div>
           <div class="col-12">
               <h4>Physical Symptoms</h4>
           </div>
           <div class="col-12">
-              <p>Feeling tired: <symptoms-select /></p>
-              <p>Difficulty sleeping or sleeping too much: <symptoms-select /></p>
-              <p>Decreased or increased appetite: <symptoms-select /></p>
-              <p>Loss of interest in sex: <symptoms-select /></p>
-              <p>Worrying about your health: <symptoms-select /></p>
+              <p>Feeling tired: <symptoms-select @change="mutateTotal" /></p>
+              <p>Difficulty sleeping or sleeping too much: <symptoms-select @change="mutateTotal" /></p>
+              <p>Decreased or increased appetite: <symptoms-select @change="mutateTotal" /></p>
+              <p>Loss of interest in sex: <symptoms-select @change="mutateTotal" /></p>
+              <p>Worrying about your health: <symptoms-select @change="mutateTotal" /></p>
           </div>
           <div class="col-12">
               <h4>Suicidal Urges</h4>
           </div>
           <div class="col-12">
-              <p>Do you have any suicidal thoughts?: <symptoms-select /></p>
-              <p>Do you want to end your life?: <symptoms-select /></p>
-              <p>Do you have a plan for harming yourself?: <symptoms-select /></p>
+              <p>Do you have any suicidal thoughts?: <symptoms-select @change="mutateTotal" /></p>
+              <p>Do you want to end your life?: <symptoms-select @change="mutateTotal" /></p>
+              <p>Do you have a plan for harming yourself?: <symptoms-select @change="mutateTotal" /></p>
           </div>
           <div class="col-12">
               <p>Total: {{total}}</p>
@@ -72,6 +72,11 @@ export default {
     },
     components: {
         SymptomsSelect
+    },
+    methods: {
+        mutateTotal(value) {
+            this.total += value;
+        }
     },
     computed: {
         date() {
