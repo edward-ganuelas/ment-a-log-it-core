@@ -1,67 +1,23 @@
 <template>
-  <div id="depressionChecklist" class="container">
-      <div class="row">
-          <div class="col-12">
-              <p>{{date}}</p>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-12">
-              <h4>Thoughts and Feelings</h4>
-          </div>
-          <div class="col-12">
-              <p>Feeling sad or down in the dumps: <symptoms-select @change="mutateTotal" /></p>
-              <p>Feeling unhappy or blue: <symptoms-select @change="mutateTotal" /></p>
-              <p>Crying spells or tearfulness: <symptoms-select @change="mutateTotal" /></p>
-              <p>Feeling discouraged: <symptoms-select @change="mutateTotal" /></p>
-              <p>Feeling hopeless: <symptoms-select @change="mutateTotal" /></p>
-              <p>Low self-esteem: <symptoms-select @change="mutateTotal" /></p>
-              <p>Feeling worthless or inadequate: <symptoms-select @change="mutateTotal" /></p>
-              <p>Guilt or shame: <symptoms-select @change="mutateTotal" /></p>
-              <p>Criticizing yourself or blaming yourself: <symptoms-select @change="mutateTotal" /></p>
-              <p>Difficulty making decisions: <symptoms-select @change="mutateTotal" /></p>
-          </div>
-          <div class="col-12">
-              <h4>Activities and Personal Relationships</h4>
-          </div>
-          <div class="col-12">
-              <p>Loss of interest in family, friends, or colleagues: <symptoms-select @change="mutateTotal" /></p>
-              <p>Loneliness: <symptoms-select @change="mutateTotal" /></p>
-              <p>Spending less time with family or friends: <symptoms-select @change="mutateTotal" /></p>
-              <p>Loss of motivation: <symptoms-select @change="mutateTotal" /></p>
-              <p>Loss of interest in work or other activities: <symptoms-select @change="mutateTotal" /></p>
-              <p>Avoiding work or other activities: <symptoms-select @change="mutateTotal" /></p>
-              <p>Loss of pleasure or satisfaction in life: <symptoms-select @change="mutateTotal" /></p>
-          </div>
-          <div class="col-12">
-              <h4>Physical Symptoms</h4>
-          </div>
-          <div class="col-12">
-              <p>Feeling tired: <symptoms-select @change="mutateTotal" /></p>
-              <p>Difficulty sleeping or sleeping too much: <symptoms-select @change="mutateTotal" /></p>
-              <p>Decreased or increased appetite: <symptoms-select @change="mutateTotal" /></p>
-              <p>Loss of interest in sex: <symptoms-select @change="mutateTotal" /></p>
-              <p>Worrying about your health: <symptoms-select @change="mutateTotal" /></p>
-          </div>
-          <div class="col-12">
-              <h4>Suicidal Urges</h4>
-          </div>
-          <div class="col-12">
-              <p>Do you have any suicidal thoughts?: <symptoms-select @change="mutateTotal" /></p>
-              <p>Do you want to end your life?: <symptoms-select @change="mutateTotal" /></p>
-              <p>Do you have a plan for harming yourself?: <symptoms-select @change="mutateTotal" /></p>
-          </div>
-          <div class="col-12">
-              <p>Total: {{total}}</p>
-              <p>{{convertedTotal}}</p>
-          </div>
-      </div>
-  </div>
+    <div id="depressionChecklist" class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>{{date}}</p>
+            </div>
+        </div>
+        <thoughts-and-feelings />
+        <activities-and-personal-relationships />
+        <physical-symptoms />
+        <suicidal-urges />
+    </div>
 </template>
 
 <script>
+import ThoughtsAndFeelings from '@/views/DepressionChecklist/ThoughtsAndFeelings';
+import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/ActivitiesAndPersonalRelationships';
+import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
+import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
 import moment from 'moment';
-import SymptomsSelect from '@/components/DepressionChecklist/SymptomsSelect';
 import _ from 'lodash';
 export default {
     name: 'DepressionChecklist',
@@ -71,7 +27,10 @@ export default {
         }
     },
     components: {
-        SymptomsSelect
+        ThoughtsAndFeelings,
+        ActivitiesAndPersonalRelationships,
+        PhysicalSymptoms,
+        SuicidalUrges
     },
     methods: {
         mutateTotal(value) {
