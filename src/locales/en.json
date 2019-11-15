@@ -1,12 +1,20 @@
 {
   "message": "hello i18n !!",
   "depressionChecklist": {
-    "lossOfInterestInFamilyFriends": "Loss of interest in family, friends, or colleagues:",
-    "loneliness": "Loneliness:",
-    "spendingLessTimeWithFamily": "Spending less time with family or friends:",
-    "lossOfMotivation": "Loss of motivation:",
-    "lossOfInterestInWorkOrOtherActivities": "Loss of interest in work or other activities:",
-    "avoidingWorkOrOtherActivitiesValue": "Avoiding work or other activities:",
-    "lossOfPleasureOrSatisfactionValue": "Loss of pleasure or satisfaction in life:"
+    "activitiesAndPersonalRelationships": {
+      "header": "Activities and Personal Relationships",
+      "lossOfInterestInFamilyFriends": "Loss of interest in family, friends, or colleagues:",
+      "loneliness": "Loneliness:",
+      "spendingLessTimeWithFamily": "Spending less time with family or friends:",
+      "lossOfMotivation": "Loss of motivation:",
+      "lossOfInterestInWorkOrOtherActivities": "Loss of interest in work or other activities:",
+      "avoidingWorkOrOtherActivitiesValue": "Avoiding work or other activities:",
+      "lossOfPleasureOrSatisfactionValue": "Loss of pleasure or satisfaction in life:"
+    },
+    "physicalSymptoms": {
+      "header": "Physical Symptoms",
+      "feelingTired": "Feeling tired:", 
+      "difficultySleepingOrSleepingTooMuch": "Difficulty sleeping or sleeping too much:"
+    }
   }
 }

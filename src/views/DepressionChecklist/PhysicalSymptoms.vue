@@ -1,11 +1,11 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <h4>Physical Symptoms</h4>
+            <h4>{{ $t('depressionChecklist.physicalSymptoms.header')}}</h4>
         </div>
         <div class="col-12">
-            <p>Feeling tired: <symptoms-select key-name="feelingTiredValue" @change="mutateTotal" /></p>
-            <p>Difficulty sleeping or sleeping too much: <symptoms-select key-name="difficultySleepingOrSleepingTooMuchValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.feelingTired')}} <symptoms-select key-name="feelingTiredValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.difficultySleepingOrSleepingTooMuch')}} <symptoms-select key-name="difficultySleepingOrSleepingTooMuchValue" @change="mutateTotal" /></p>
             <p>Decreased or increased appetite: <symptoms-select key-name="decreasedOrIncreasedAppetiteValue" @change="mutateTotal" /></p>
             <p>Loss of interest in sex: <symptoms-select key-name="lossOfInterestInSexValue" @change="mutateTotal" /></p>
             <p>Worrying about your health: <symptoms-select key-name="worryingAboutYourHealthValue" @change="mutateTotal" /></p>

@@ -1,16 +1,16 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <h4>Activities and Personal Relationships</h4>
+            <h4>{{$t('depressionChecklist.activitiesAndPersonalRelationships.header')}}</h4>
         </div>
         <div class="col-12">
-            <p>{{$t('depressionChecklist.lossOfInterestInFamilyFriends')}}  <symptoms-select key-name="lossOfInterestInFamilyFriendsValue" @change="mutateTotal" /></p>
-            <p>{{$t('depressionChecklist.loneliness')}} <symptoms-select key-name="lonelinessValue" @change="mutateTotal" /></p>
-            <p>{{$t('depressionChecklist.spendingLessTimeWithFamily')}} <symptoms-select key-name="spendingLessTimeWithFamilyValue" @change="mutateTotal" /></p>
-            <p>{{$t('depressionChecklist.spendingLessTimeWithFamily')}} <symptoms-select key-name="lossOfMotivationValue" @change="mutateTotal" /></p>
-            <p>{{$t('depressionChecklist.lossOfInterestInWorkOrOtherActivities')}} <symptoms-select key-name="lossOfInterestInWorkOrOtherActivitiesValue" @change="mutateTotal" /></p>
-            <p>{{$t('depressionChecklist.avoidingWorkOrOtherActivitiesValue')}}: <symptoms-select key-name="avoidingWorkOrOtherActivitiesValue" @change="mutateTotal" /></p>
-            <p>{{$t('depressionChecklist.lossOfPleasureOrSatisfactionValue')}} <symptoms-select key-name="lossOfPleasureOrSatisfactionValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.lossOfInterestInFamilyFriends')}}  <symptoms-select key-name="lossOfInterestInFamilyFriendsValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.loneliness')}} <symptoms-select key-name="lonelinessValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.spendingLessTimeWithFamily')}} <symptoms-select key-name="spendingLessTimeWithFamilyValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.spendingLessTimeWithFamily')}} <symptoms-select key-name="lossOfMotivationValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.lossOfInterestInWorkOrOtherActivities')}} <symptoms-select key-name="lossOfInterestInWorkOrOtherActivitiesValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.avoidingWorkOrOtherActivitiesValue')}}: <symptoms-select key-name="avoidingWorkOrOtherActivitiesValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.activitiesAndPersonalRelationships.lossOfPleasureOrSatisfactionValue')}} <symptoms-select key-name="lossOfPleasureOrSatisfactionValue" @change="mutateTotal" /></p>
         </div>
     </div>
 </template>
