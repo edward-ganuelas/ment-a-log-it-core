@@ -17,8 +17,10 @@
 
 <script>
 import SymptomsSelect from '@/components/DepressionChecklist/SymptomsSelect';
+import mutateTotal from '@/mixins/mutateTotal';
 export default {
     name: 'ActivitiesAndPersonalRelationships',
+    mixins: [mutateTotal],
     components: {
         SymptomsSelect
     },
@@ -31,12 +33,6 @@ export default {
             lossOfInterestInWorkOrOtherActivitiesValue: 0,
             avoidingWorkOrOtherActivitiesValue: 0,
             lossOfPleasureOrSatisfactionValue: 0 
-        }
-    },
-    methods: {
-        mutateTotal(value, key) {
-            console.log(value, key);
-            this[key] = value;
         }
     },
     computed: {
