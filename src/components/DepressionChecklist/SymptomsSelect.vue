@@ -1,5 +1,5 @@
 <template>
-    <select v-model="value" @change="$emit('change', value)">
+    <select v-model="value" @change="$emit('change', value, keyName)">
         <option v-for="choice in choices" :key="choice.value" :value="choice.value">
             {{choice.label}}
         </option>
@@ -9,6 +9,12 @@
 <script>
 export default {
     name: 'SymptomsSelect',
+    props: {
+        keyName: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
             value: 0,

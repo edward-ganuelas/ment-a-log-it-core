@@ -5,10 +5,10 @@
                 <p>{{date}}</p>
             </div>
         </div>
-        <thoughts-and-feelings />
-        <activities-and-personal-relationships />
-        <physical-symptoms />
-        <suicidal-urges />
+        <thoughts-and-feelings v-on:totalUpdate="mutateTotal" />
+        <activities-and-personal-relationships v-on:totalUpdate="mutateTotal" />
+        <physical-symptoms v-on:totalUpdate="mutateTotal" />
+        <suicidal-urges v-on:totalUpdate="mutateTotal" />
     </div>
 </template>
 
@@ -23,7 +23,10 @@ export default {
     name: 'DepressionChecklist',
     data() {
         return {
-            total: 0
+            thoughtsAndFeelingsTotal: 0,
+            activitiesAndPersonalRelationshipsTotal: 0,
+            physicalSymptomsTotal: 0,
+            suicidalUrgesTotal: 0
         }
     },
     components: {
@@ -33,13 +36,16 @@ export default {
         SuicidalUrges
     },
     methods: {
-        mutateTotal(value) {
-            this.total += value;
+        mutateTotal(key, value) {
+            this[key] = value;
         }
     },
     computed: {
         date() {
             return moment().format('MMM DD, YYYY');
+        },
+        total() {
+            return this.thoughtsAndFeelingsTotal + this.activitiesAndPersonalRelationshipsTotal + this.physicalSymptomsTotal + this.suicidalUrgesTotal;
         },
         convertedTotal() {
             const total = _.clone(this.total);
@@ -57,7 +63,6 @@ export default {
             } else if (total > 75 ) {
                 convertedTotal = 'Extreme depression';
             }
-            
             return convertedTotal;
         }
     }
