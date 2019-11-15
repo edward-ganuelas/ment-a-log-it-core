@@ -9,6 +9,12 @@
         <activities-and-personal-relationships v-on:totalUpdate="mutateTotal" />
         <physical-symptoms v-on:totalUpdate="mutateTotal" />
         <suicidal-urges v-on:totalUpdate="mutateTotal" />
+        <div class="row">
+            <div class="col-12">
+                <p>Total: {{total}}</p>
+                <p>{{convertedTotal}}</p>
+            </div>
+        </div>
     </div>
 </template>
 
