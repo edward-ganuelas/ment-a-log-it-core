@@ -10,4 +10,9 @@ const persistedStore = localforage.createInstance({
     name: 'mental-health-checklist'
 });
 
+const STORE_KEYS = Object.freeze({
+    DEPRESSION_CHECKLISTS: 'depression-checklists'
+});
+
 export default persistedStore;
+export { STORE_KEYS };

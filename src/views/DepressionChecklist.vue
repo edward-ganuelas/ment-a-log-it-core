@@ -31,14 +31,14 @@ import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/Acti
 import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
 import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
 import DepressionChecklist from '@/models/DepressionChecklist';
-import persistedStore from '@/localforage';
+import { sync } from 'vuex-pathify'
+import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
 import _ from 'lodash';
 export default {
     name: 'DepressionChecklist',
     data() {
         return {
-            id: null,
             thoughtsAndFeelingsTotal: 0,
             activitiesAndPersonalRelationshipsTotal: 0,
             physicalSymptomsTotal: 0,
@@ -58,17 +58,18 @@ export default {
         async save() {
             const depressionChecklist = new DepressionChecklist(this.date, this.depressionChecklistData, this.id);
             this.id = depressionChecklist.id;
-            const depressionChecklistArray = await persistedStore.getItem('depression-checklists');
+            const depressionChecklistArray = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
             const arrayIndex = _.findIndex(depressionChecklistArray, (listItem) => listItem.id === this.id);
             if (arrayIndex !== -1) {
                 depressionChecklistArray[arrayIndex] = depressionChecklist.depressionChecklist;
             } else {
                 depressionChecklistArray.push(depressionChecklist.depressionChecklist);
             }
-            await persistedStore.setItem('depression-checklists', depressionChecklistArray);
+            await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, depressionChecklistArray);
         }
     },
     computed: {
+        id: sync('DepressionChecklist/id'),
         depressionChecklistData() {
             return {
                 feelingSadOrDownInTheDumpsValue: this.$store.get('DepressionChecklist/feelingSadOrDownInTheDumpsValue'),
