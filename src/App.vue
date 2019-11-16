@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav" class="container">
       <router-link to="/" class="col">Home</router-link>
+      <router-link to="/depression-checklist" class="col">Depression Checklist</router-link>
       <router-link to="/about" class="col">About</router-link>
     </div>
     <router-view/>

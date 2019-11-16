@@ -1,0 +1,59 @@
+{
+  "message": "hello i18n !!",
+  "depressionChecklist": {
+    "header": "Depression Checklist",
+    "intro": "How are you feeling today? <br />This checklist is meant to only be a guide. <br /> Please see a licensed health professional if you are feeling unwell.",
+    "activitiesAndPersonalRelationships": {
+      "header": "Activities and Personal Relationships",
+      "lossOfInterestInFamilyFriends": "Loss of interest in family, friends, or colleagues:",
+      "loneliness": "Loneliness:",
+      "spendingLessTimeWithFamily": "Spending less time with family or friends:",
+      "lossOfMotivation": "Loss of motivation:",
+      "lossOfInterestInWorkOrOtherActivities": "Loss of interest in work or other activities:",
+      "avoidingWorkOrOtherActivitiesValue": "Avoiding work or other activities:",
+      "lossOfPleasureOrSatisfactionValue": "Loss of pleasure or satisfaction in life:"
+    },
+    "physicalSymptoms": {
+      "header": "Physical Symptoms",
+      "feelingTired": "Feeling tired:", 
+      "difficultySleepingOrSleepingTooMuch": "Difficulty sleeping or sleeping too much:",
+      "decreasedOrIncreasedAppetite": "Decreased or increased appetite:",
+      "lossOfInterestInSex": "Loss of interest in sex:",
+      "worryingAboutYourHealth": "Worrying about your health:"
+    },
+    "suicidalUrges": {
+      "header": "Suicidal Urges",
+      "suicidalThoughts": "Do you have any suicidal thoughts?: ",
+      "endYourLife": "Do you want to end your life?: ", 
+      "planOnHarmingYourself": "Do you have a plan for harming yourself?: "
+    },
+    "thoughtsAndFeelings": {
+      "header": "Thoughts and Feelings",
+      "feelingSadOrDownInTheDumps": "Feeling sad or down in the dumps:",
+      "feelingUnhappyOrBlue": "Feeling unhappy or blue:",
+      "cryingSpells": "Crying spells or tearfulness:",
+      "feelingDiscouraged": "Feeling discouraged:",
+      "feelingHopeless": "Feeling hopeless:",
+      "lowSelfEsteem": "Low self-esteem:",
+      "feelingWorthlessOrInadequate": "Feeling worthless or inadequate:",
+      "guiltOrShame": "Guilt or shame:",
+      "criticizingYourself": "Criticizing yourself or blaming yourself:",
+      "difficultyMakingDecisions": "Difficulty making decisions:"
+    },
+    "symptompsChoices": {
+      "notAtAll": "Not at All",
+      "somewhat": "Somewhat",
+      "moderately": "Moderately",
+      "aLot": "A Lot",
+      "extremely": "Extremely"
+    },
+    "convertedTotal": {
+      "noDepression": "No Depression",
+      "normalButUnhappy": "Normal but unhappy",
+      "mildDepression": "Mild depression",
+      "moderateDepresion": "Moderate depression",
+      "severeDepression" : "Severe depression",
+      "extremeDepression": "Extreme depression"
+    }
+  }
+}
