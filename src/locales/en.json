@@ -44,6 +44,14 @@
       "moderately": "Moderately",
       "aLot": "A Lot",
       "extremely": "Extremely"
+    },
+    "convertedTotal": {
+      "noDepression": "No Depression",
+      "normalButUnhappy": "Normal but unhappy",
+      "mildDepression": "Mild depression",
+      "moderateDepresion": "Moderate depression",
+      "severeDepression" : "Severe depression",
+      "extremeDepression": "Extreme depression"
     }
   }
 }

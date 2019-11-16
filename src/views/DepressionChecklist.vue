@@ -57,17 +57,17 @@ export default {
             const total = _.clone(this.total);
             let convertedTotal = '';
             if (total >= 0 && total <= 5) {
-                convertedTotal = 'No Depression';
+                convertedTotal = this.$t('depressionChecklist.convertedTotal.noDepression');
             } else if (total > 5 && total <= 10) {
-                convertedTotal = 'Normal but unhappy';
+                convertedTotal = this.$t('depressionChecklist.convertedTotal.normalButUnhappy');
             } else if (total > 10 && total <= 25) {
-                convertedTotal = 'Mild depression';
+                convertedTotal = this.$t('depressionChecklist.convertedTotal.mildDepression');
             } else if (total > 25 && total <= 50) {
-                convertedTotal = 'Moderate depression';
+                convertedTotal = this.$t('depressionChecklist.convertedTotal.moderateDepresion');
             } else if (total > 50 && total <= 75) {
-                convertedTotal = 'Severe depression';
+                convertedTotal = this.$t('depressionChecklist.convertedTotal.severeDepression');
             } else if (total > 75 ) {
-                convertedTotal = 'Extreme depression';
+                convertedTotal = this.$t('depressionChecklist.convertedTotal.extremeDepression');
             }
             return convertedTotal;
         }
