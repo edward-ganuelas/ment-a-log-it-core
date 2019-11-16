@@ -1,6 +1,8 @@
 {
   "message": "hello i18n !!",
   "depressionChecklist": {
+    "header": "Depression Checklist",
+    "intro": "How are you feeling today? <br />This checklist is meant to only be a guide. <br /> Please see a licensed health professional if you are feeling unwell.",
     "activitiesAndPersonalRelationships": {
       "header": "Activities and Personal Relationships",
       "lossOfInterestInFamilyFriends": "Loss of interest in family, friends, or colleagues:",
