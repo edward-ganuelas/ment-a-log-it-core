@@ -2,7 +2,7 @@
 import uuidv4 from 'uuid/v4';
 
 class DepressionChecklist {
-    constructor(id = null, date, data) {
+    constructor(date, data, id = null) {
         this.id = id === null ? uuidv4() : id;
         this.date = date;
         this.depressionChecklistData = data;
@@ -15,6 +15,6 @@ class DepressionChecklist {
             depressionChecklistData: this.depressionChecklistData
         }
     }
-};
+}
 
 export default DepressionChecklist;

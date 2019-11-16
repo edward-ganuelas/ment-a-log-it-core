@@ -1,6 +1,7 @@
 import { make } from 'vuex-pathify'
 
 const state = {
+    id: null,
     feelingSadOrDownInTheDumpsValue: 0,
     feelingUnhappyOrBlueValue: 0,
     cryingSpellsValue: 0,
