@@ -7,11 +7,16 @@
 </template>
 
 <script>
+import _ from 'lodash';
 export default {
     name: 'SymptomsSelect',
     props: {
         keyName: {
             type: String,
+            required: true
+        },
+        selected: {
+            type: Number,
             required: true
         }
     },
@@ -27,6 +32,9 @@ export default {
             ])
         }
         
+    },
+    beforeMount() {
+        this.value = _.cloneDeep(this.selected);
     }
 }
 </script>

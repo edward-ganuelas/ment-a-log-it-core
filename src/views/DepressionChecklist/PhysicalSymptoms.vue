@@ -4,11 +4,11 @@
             <h4>{{ $t('depressionChecklist.physicalSymptoms.header')}}</h4>
         </div>
         <div class="col-12">
-            <p>{{ $t('depressionChecklist.physicalSymptoms.feelingTired')}} <symptoms-select key-name="feelingTiredValue" @change="mutateTotal" /></p>
-            <p>{{ $t('depressionChecklist.physicalSymptoms.difficultySleepingOrSleepingTooMuch')}} <symptoms-select key-name="difficultySleepingOrSleepingTooMuchValue" @change="mutateTotal" /></p>
-            <p>{{ $t('depressionChecklist.physicalSymptoms.decreasedOrIncreasedAppetite')}} <symptoms-select key-name="decreasedOrIncreasedAppetiteValue" @change="mutateTotal" /></p>
-            <p>{{ $t('depressionChecklist.physicalSymptoms.lossOfInterestInSex')}} <symptoms-select key-name="lossOfInterestInSexValue" @change="mutateTotal" /></p>
-            <p>{{ $t('depressionChecklist.physicalSymptoms.worryingAboutYourHealth')}} <symptoms-select key-name="worryingAboutYourHealthValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.feelingTired')}} <symptoms-select :selected="feelingTiredValue" key-name="feelingTiredValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.difficultySleepingOrSleepingTooMuch')}} <symptoms-select :selected="difficultySleepingOrSleepingTooMuchValue" key-name="difficultySleepingOrSleepingTooMuchValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.decreasedOrIncreasedAppetite')}} <symptoms-select :selected="decreasedOrIncreasedAppetiteValue" key-name="decreasedOrIncreasedAppetiteValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.lossOfInterestInSex')}} <symptoms-select :selected="lossOfInterestInSexValue" key-name="lossOfInterestInSexValue" @change="mutateTotal" /></p>
+            <p>{{ $t('depressionChecklist.physicalSymptoms.worryingAboutYourHealth')}} <symptoms-select :selected="worryingAboutYourHealthValue" key-name="worryingAboutYourHealthValue" @change="mutateTotal" /></p>
         </div>
     </div>
 </template>
@@ -22,20 +22,27 @@ export default {
     components: {
         SymptomsSelect
     },
+    data() {
+        return {
+            total: 0
+        }
+    },
+    methods: {
+        setTotal() {
+            this.total = this.feelingTiredValue + this.difficultySleepingOrSleepingTooMuchValue +
+                this.decreasedOrIncreasedAppetiteValue + this.lossOfInterestInSexValue +
+                    this.worryingAboutYourHealthValue;
+        }
+    },
     computed: {
         feelingTiredValue: sync('DepressionChecklist/feelingTiredValue'),
         difficultySleepingOrSleepingTooMuchValue: sync('DepressionChecklist/difficultySleepingOrSleepingTooMuchValue'),
         decreasedOrIncreasedAppetiteValue: sync('DepressionChecklist/decreasedOrIncreasedAppetiteValue'),
         lossOfInterestInSexValue: sync('DepressionChecklist/lossOfInterestInSexValue'),
         worryingAboutYourHealthValue: sync('DepressionChecklist/worryingAboutYourHealthValue'),
-        value() {
-            return this.feelingTiredValue + this.difficultySleepingOrSleepingTooMuchValue +
-                this.decreasedOrIncreasedAppetiteValue + this.lossOfInterestInSexValue +
-                    this.worryingAboutYourHealthValue;
-        }
     },
     watch: {
-        value(newValue) {
+        total(newValue) {
             this.$emit('totalUpdate', 'physicalSymptomsTotal', newValue);
         }
     }

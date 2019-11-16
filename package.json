@@ -53,7 +53,8 @@
       "indent": [
         "error",
         4
-      ]
+      ],
+      "no-console": 0
     },
     "parserOptions": {
       "parser": "babel-eslint"
