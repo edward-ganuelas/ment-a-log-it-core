@@ -1,19 +1,19 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <h4>Thoughts and Feelings</h4>
+            <h4>{{$t('depressionChecklist.thoughtsAndFeelings.header')}}</h4>
         </div>
         <div class="col-12">
-            <p>Feeling sad or down in the dumps: <symptoms-select key-name="feelingSadOrDownInTheDumpsValue" @change="mutateTotal" /></p>
-            <p>Feeling unhappy or blue: <symptoms-select key-name="feelingUnhappyOrBlueValue" @change="mutateTotal" /></p>
-            <p>Crying spells or tearfulness: <symptoms-select key-name="cryingSpellsValue" @change="mutateTotal" /></p>
-            <p>Feeling discouraged: <symptoms-select key-name="feelingDiscouragedValue" @change="mutateTotal" /></p>
-            <p>Feeling hopeless: <symptoms-select key-name="feelingHopelessValue" @change="mutateTotal" /></p>
-            <p>Low self-esteem: <symptoms-select key-name="lowSelfEsteemValue" @change="mutateTotal" /></p>
-            <p>Feeling worthless or inadequate: <symptoms-select key-name="feelingWorthlessOrInadequateValue" @change="mutateTotal" /></p>
-            <p>Guilt or shame: <symptoms-select key-name="guiltOrShameValue" @change="mutateTotal" /></p>
-            <p>Criticizing yourself or blaming yourself: <symptoms-select key-name="criticizingYourselfValue" @change="mutateTotal" /></p>
-            <p>Difficulty making decisions: <symptoms-select key-name="difficultyMakingDecisionsValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.feelingSadOrDownInTheDumps')}} <symptoms-select key-name="feelingSadOrDownInTheDumpsValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.feelingUnhappyOrBlue')}} <symptoms-select key-name="feelingUnhappyOrBlueValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.cryingSpells')}}  <symptoms-select key-name="cryingSpellsValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.feelingDiscouraged')}} <symptoms-select key-name="feelingDiscouragedValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.feelingHopeless')}} <symptoms-select key-name="feelingHopelessValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.lowSelfEsteem')}} <symptoms-select key-name="lowSelfEsteemValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.feelingWorthlessOrInadequate')}} <symptoms-select key-name="feelingWorthlessOrInadequateValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.guiltOrShame')}} <symptoms-select key-name="guiltOrShameValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.criticizingYourself')}} <symptoms-select key-name="criticizingYourselfValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.thoughtsAndFeelings.difficultyMakingDecisions')}} <symptoms-select key-name="difficultyMakingDecisionsValue" @change="mutateTotal" /></p>
         </div>
     </div>
 </template>

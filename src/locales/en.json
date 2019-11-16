@@ -24,6 +24,19 @@
       "suicidalThoughts": "Do you have any suicidal thoughts?: ",
       "endYourLife": "Do you want to end your life?: ", 
       "planOnHarmingYourself": "Do you have a plan for harming yourself?: "
+    },
+    "thoughtsAndFeelings": {
+      "header": "Thoughts and Feelings",
+      "feelingSadOrDownInTheDumps": "Feeling sad or down in the dumps:",
+      "feelingUnhappyOrBlue": "Feeling unhappy or blue:",
+      "cryingSpells": "Crying spells or tearfulness:",
+      "feelingDiscouraged": "Feeling discouraged:",
+      "feelingHopeless": "Feeling hopeless:",
+      "lowSelfEsteem": "Low self-esteem:",
+      "feelingWorthlessOrInadequate": "Feeling worthless or inadequate:",
+      "guiltOrShame": "Guilt or shame:",
+      "criticizingYourself": "Criticizing yourself or blaming yourself:",
+      "difficultyMakingDecisions": "Difficulty making decisions:"
     }
   }
 }
