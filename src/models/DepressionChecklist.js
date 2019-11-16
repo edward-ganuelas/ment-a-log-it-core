@@ -12,7 +12,7 @@ class DepressionChecklist {
         return {
             id: this.id,
             date: this.date,
-            depressionChecklistData: this.depressionChecklistData;
+            depressionChecklistData: this.depressionChecklistData
         }
     }
 };
