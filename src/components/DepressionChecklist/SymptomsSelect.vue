@@ -19,11 +19,11 @@ export default {
         return {
             value: 0,
             choices: Object.freeze([
-                { value: 0, label: 'Not at All' },
-                { value: 1, label: 'Somewhat' },
-                { value: 2, label: 'Moderately'},
-                { value: 3, label: 'A Lot' },
-                { value: 4, label: 'Extremely' }
+                { value: 0, label: this.$t('depressionChecklist.symptompsChoices.notAtAll') },
+                { value: 1, label: this.$t('depressionChecklist.symptompsChoices.somewhat') },
+                { value: 2, label: this.$t('depressionChecklist.symptompsChoices.moderately')},
+                { value: 3, label: this.$t('depressionChecklist.symptompsChoices.aLot') },
+                { value: 4, label: this.$t('depressionChecklist.symptompsChoices.extremely') }
             ])
         }
         

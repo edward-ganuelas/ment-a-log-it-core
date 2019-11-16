@@ -37,6 +37,13 @@
       "guiltOrShame": "Guilt or shame:",
       "criticizingYourself": "Criticizing yourself or blaming yourself:",
       "difficultyMakingDecisions": "Difficulty making decisions:"
+    },
+    "symptompsChoices": {
+      "notAtAll": "Not at All",
+      "somewhat": "Somewhat",
+      "moderately": "Moderately",
+      "aLot": "A Lot",
+      "extremely": "Extremely"
     }
   }
 }
