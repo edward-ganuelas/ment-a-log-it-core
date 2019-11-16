@@ -1,12 +1,12 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <h4>Suicidal Urges</h4>
+            <h4>{{$t('depressionChecklist.suicidalUrges.header')}}</h4>
         </div>
         <div class="col-12">
-            <p>Do you have any suicidal thoughts?: <symptoms-select key-name="suicidalThoughtsValue" @change="mutateTotal" /></p>
-            <p>Do you want to end your life?: <symptoms-select key-name="endYourLifeValue" @change="mutateTotal" /></p>
-            <p>Do you have a plan for harming yourself?: <symptoms-select key-name="planOnHarmingYourselfValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.suicidalUrges.suicidalThoughts')}}<symptoms-select key-name="suicidalThoughtsValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.suicidalUrges.endYourLife')}} <symptoms-select key-name="endYourLifeValue" @change="mutateTotal" /></p>
+            <p>{{$t('depressionChecklist.suicidalUrges.planOnHarmingYourself')}} <symptoms-select key-name="planOnHarmingYourselfValue" @change="mutateTotal" /></p>
         </div>
     </div>
 </template>

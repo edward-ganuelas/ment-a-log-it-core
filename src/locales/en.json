@@ -18,6 +18,12 @@
       "decreasedOrIncreasedAppetite": "Decreased or increased appetite:",
       "lossOfInterestInSex": "Loss of interest in sex:",
       "worryingAboutYourHealth": "Worrying about your health:"
+    },
+    "suicidalUrges": {
+      "header": "Suicidal Urges",
+      "suicidalThoughts": "Do you have any suicidal thoughts?: ",
+      "endYourLife": "Do you want to end your life?: ", 
+      "planOnHarmingYourself": "Do you have a plan for harming yourself?: "
     }
   }
 }
