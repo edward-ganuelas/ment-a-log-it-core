@@ -54,7 +54,8 @@
       "indent": [
         "error",
         4
-      ]
+      ],
+      "no-console": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"

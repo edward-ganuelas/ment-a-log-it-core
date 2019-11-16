@@ -10,7 +10,7 @@
 </template>
 <script>
 import darkMode from './darkmode';
-import persistedStore from '@/localforage';
+import persistedStore, { STORE_KEYS } from '@/localforage';
 export default {
     data() {
         return {
@@ -28,7 +28,7 @@ export default {
     async beforeMount() {
         this.depressionChecklist = await this.getPersistedDerpressionChecklist();
         if (this.depressionChecklist ===  null) {
-            await persistedStore.setItem('depression-checklists', []);
+            await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, []);
             this.depressionChecklist = await this.getPersistedDerpressionChecklist();
         }
     }

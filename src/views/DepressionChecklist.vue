@@ -19,6 +19,7 @@
             <div class="col-12">
                 <p>Total: {{total}}</p>
                 <p>{{convertedTotal}}</p>
+                <button @click="save">Save</button>
             </div>
         </div>
     </div>
@@ -29,6 +30,9 @@ import ThoughtsAndFeelings from '@/views/DepressionChecklist/ThoughtsAndFeelings
 import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/ActivitiesAndPersonalRelationships';
 import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
 import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
+import DepressionChecklist from '@/models/DepressionChecklist';
+import { sync } from 'vuex-pathify'
+import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
 import _ from 'lodash';
 export default {
@@ -50,9 +54,50 @@ export default {
     methods: {
         mutateTotal(key, value) {
             this[key] = value;
+        },
+        async save() {
+            const depressionChecklist = new DepressionChecklist(this.date, this.depressionChecklistData, this.id);
+            this.id = depressionChecklist.id;
+            const depressionChecklistArray = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
+            const arrayIndex = _.findIndex(depressionChecklistArray, (listItem) => listItem.id === this.id);
+            if (arrayIndex !== -1) {
+                depressionChecklistArray[arrayIndex] = depressionChecklist.depressionChecklist;
+            } else {
+                depressionChecklistArray.push(depressionChecklist.depressionChecklist);
+            }
+            await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, depressionChecklistArray);
         }
     },
     computed: {
+        id: sync('DepressionChecklist/id'),
+        depressionChecklistData() {
+            return {
+                feelingSadOrDownInTheDumpsValue: this.$store.get('DepressionChecklist/feelingSadOrDownInTheDumpsValue'),
+                cryingSpellsValue: this.$store.get('DepressionChecklist/cryingSpellsValue'),
+                feelingDiscouragedValue: this.$store.get('DepressionChecklist/feelingDiscouragedValue'),
+                feelingHopelessValue: this.$store.get('DepressionChecklist/feelingHopelessValue'),
+                lowSelfEsteemValue: this.$store.get('DepressionChecklist/lowSelfEsteemValue'),
+                feelingWorthlessOrInadequateValue: this.$store.get('DepressionChecklist/feelingWorthlessOrInadequateValue'),
+                guiltOrShameValue: this.$store.get('DepressionChecklist/guiltOrShameValue'),
+                criticizingYourselfValue: this.$store.get('DepressionChecklist/criticizingYourselfValue'),
+                difficultyMakingDecisionsValue: this.$store.get('DepressionChecklist/difficultyMakingDecisionsValue'),
+                lossOfInterestInFamilyFriendsValue: this.$store.get('DepressionChecklist/lossOfInterestInFamilyFriendsValue'),
+                lonelinessValue: this.$store.get('DepressionChecklist/lonelinessValue'),
+                spendingLessTimeWithFamilyValue: this.$store.get('DepressionChecklist/spendingLessTimeWithFamilyValue'),
+                lossOfMotivationValue: this.$store.get('DepressionChecklist/lossOfMotivationValue'),
+                lossOfInterestInWorkOrOtherActivitiesValue: this.$store.get('DepressionChecklist/lossOfInterestInWorkOrOtherActivitiesValue'),
+                avoidingWorkOrOtherActivitiesValue: this.$store.get('DepressionChecklist/avoidingWorkOrOtherActivitiesValue'),
+                lossOfPleasureOrSatisfactionValue: this.$store.get('DepressionChecklist/lossOfPleasureOrSatisfactionValue'),
+                feelingTiredValue: this.$store.get('DepressionChecklist/feelingTiredValue'),
+                difficultySleepingOrSleepingTooMuchValue: this.$store.get('DepressionChecklist/difficultySleepingOrSleepingTooMuchValue'),
+                decreasedOrIncreasedAppetiteValue: this.$store.get('DepressionChecklist/decreasedOrIncreasedAppetiteValue'),
+                lossOfInterestInSexValue: this.$store.get('DepressionChecklist/lossOfInterestInSexValue'),
+                worryingAboutYourHealthValue: this.$store.get('DepressionChecklist/worryingAboutYourHealthValue'),
+                suicidalThoughtsValue: this.$store.get('DepressionChecklist/suicidalThoughtsValue'),
+                endYourLifeValue: this.$store.get('DepressionChecklist/endYourLifeValue'),
+                planOnHarmingYourselfValue: this.$store.get('DepressionChecklist/planOnHarmingYourselfValue')
+            }
+        },
         date() {
             return moment().format('MMM DD, YYYY');
         },
