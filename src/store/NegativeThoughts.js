@@ -4,11 +4,17 @@ const state = {
     NegativeThoughts: []
 };
 
-const mutations = make.mutations(state);
+const mutations = {
+    ...make.mutations(state)
+};
 
-const actions = make.actions(state);
+const actions = {
+    ...make.actions(state)
+};
 
-const getters = make.getters(state);
+const getters = {
+    ...make.getters(state)
+};
 
 export default {
     namespaced: true,
