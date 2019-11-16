@@ -14,7 +14,10 @@
     "physicalSymptoms": {
       "header": "Physical Symptoms",
       "feelingTired": "Feeling tired:", 
-      "difficultySleepingOrSleepingTooMuch": "Difficulty sleeping or sleeping too much:"
+      "difficultySleepingOrSleepingTooMuch": "Difficulty sleeping or sleeping too much:",
+      "decreasedOrIncreasedAppetite": "Decreased or increased appetite:",
+      "lossOfInterestInSex": "Loss of interest in sex:",
+      "worryingAboutYourHealth": "Worrying about your health:"
     }
   }
 }
