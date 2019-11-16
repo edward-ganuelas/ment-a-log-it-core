@@ -12,6 +12,7 @@ const state = {
     criticizingYourselfValue: 0,
     difficultyMakingDecisionsValue: 0,
     lossOfInterestInFamilyFriendsValue: 0,
+    lonelinessValue: 0,
     spendingLessTimeWithFamilyValue: 0,
     lossOfMotivationValue: 0,
     lossOfInterestInWorkOrOtherActivitiesValue: 0,

@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { sync } from 'vuex-pathify';
 import SymptomsSelect from '@/components/DepressionChecklist/SymptomsSelect';
 import mutateTotal from '@/mixins/mutateTotal';
 export default {
@@ -24,18 +25,14 @@ export default {
     components: {
         SymptomsSelect
     },
-    data() {
-        return {
-            lossOfInterestInFamilyFriendsValue: 0,
-            lonelinessValue: 0,
-            spendingLessTimeWithFamilyValue: 0,
-            lossOfMotivationValue: 0,
-            lossOfInterestInWorkOrOtherActivitiesValue: 0,
-            avoidingWorkOrOtherActivitiesValue: 0,
-            lossOfPleasureOrSatisfactionValue: 0 
-        }
-    },
     computed: {
+        lossOfInterestInFamilyFriendsValue: sync('DepressionChecklist/lossOfInterestInFamilyFriendsValue'),
+        lonelinessValue: sync('DepressionChecklist/lonelinessValue'),
+        spendingLessTimeWithFamilyValue: sync('DepressionChecklist/spendingLessTimeWithFamilyValue'),
+        lossOfMotivationValue: sync('DepressionChecklist/lossOfMotivationValue'),
+        lossOfInterestInWorkOrOtherActivitiesValue: sync('DepressionChecklist/lossOfInterestInWorkOrOtherActivitiesValue'),
+        avoidingWorkOrOtherActivitiesValue: sync('DepressionChecklist/avoidingWorkOrOtherActivitiesValue'),
+        lossOfPleasureOrSatisfactionValue: sync('DepressionChecklist/lossOfPleasureOrSatisfactionValue'),
         total() {
             return this.lossOfInterestInFamilyFriendsValue + this.lonelinessValue +
                 this.spendingLessTimeWithFamilyValue + this.lossOfMotivationValue +

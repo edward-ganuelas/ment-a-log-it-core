@@ -11,6 +11,7 @@
     </div>
 </template>
 <script>
+import { sync } from 'vuex-pathify'
 import mutateTotal from '@/mixins/mutateTotal';
 import SymptomsSelect from '@/components/DepressionChecklist/SymptomsSelect';
 export default {
@@ -19,14 +20,10 @@ export default {
     components: {
         SymptomsSelect
     },
-    data() {
-        return {
-            suicidalThoughtsValue: 0,
-            endYourLifeValue: 0,
-            planOnHarmingYourselfValue: 0
-        }
-    },
     computed: {
+        suicidalThoughtsValue: sync('DepressionChecklist/suicidalThoughtsValue'),
+        endYourLifeValue: sync('DepressionChecklist/endYourLifeValue'),
+        planOnHarmingYourselfValue: sync('DepressionChecklist/planOnHarmingYourselfValue'),
         total() {
             return this.suicidalThoughtsValue + this.endYourLifeValue + this.planOnHarmingYourselfValue;
         }

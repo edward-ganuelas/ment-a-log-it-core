@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { sync } from 'vuex-pathify';
 import mutateTotal from '@/mixins/mutateTotal';
 import SymptomsSelect from '@/components/DepressionChecklist/SymptomsSelect';
 export default {
@@ -27,21 +28,17 @@ export default {
     components: {
         SymptomsSelect
     },
-    data() {
-        return {
-            feelingSadOrDownInTheDumpsValue: 0,
-            feelingUnhappyOrBlueValue: 0,
-            cryingSpellsValue: 0,
-            feelingDiscouragedValue: 0,
-            feelingHopelessValue: 0,
-            lowSelfEsteemValue: 0,
-            feelingWorthlessOrInadequateValue: 0,
-            guiltOrShameValue: 0,
-            criticizingYourselfValue: 0,
-            difficultyMakingDecisionsValue: 0
-        }
-    },
     computed: {
+        feelingSadOrDownInTheDumpsValue: sync('DepressionChecklist/feelingSadOrDownInTheDumpsValue'),
+        feelingUnhappyOrBlueValue: sync('DepressionChecklist/feelingUnhappyOrBlueValue'),
+        cryingSpellsValue: sync('DepressionChecklist/cryingSpellsValue'),
+        feelingDiscouragedValue: sync('DepressionChecklist/feelingDiscouragedValue'),
+        feelingHopelessValue: sync('DepressionChecklist/feelingHopelessValue'),
+        lowSelfEsteemValue: sync('DepressionChecklist/lowSelfEsteemValue'),
+        feelingWorthlessOrInadequateValue: sync('DepressionChecklist/feelingWorthlessOrInadequateValue'),
+        guiltOrShameValue: sync('DepressionChecklist/guiltOrShameValue'),
+        criticizingYourselfValue: sync('DepressionChecklist/criticizingYourselfValue'),
+        difficultyMakingDecisionsValue: sync('DepressionChecklist/difficultyMakingDecisionsValue'),
         total() {
             return this.feelingSadOrDownInTheDumpsValue + this.feelingUnhappyOrBlueValue +
                 this.cryingSpellsValue + this.feelingDiscouragedValue + this.feelingHopelessValue +
