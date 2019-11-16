@@ -1,6 +1,6 @@
-# cbt-triple-column
+# Mental Health Toolkit
 
-A web application based on David Burns' Triple Column Technique written on Vue.js
+A collection of web components based on David Burns' Techniques to help deal with depression. Written on Vue.js
 
 ## Project setup
 ```
