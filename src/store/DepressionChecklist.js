@@ -63,7 +63,6 @@ const mutations = {
     load(state, depressionChecklist) {
         state.id = depressionChecklist.id;
         _.forEach(depressionChecklist.depressionChecklistData, (value, key) => {
-            console.log(key);
             state[key] = value;
         });
     }
