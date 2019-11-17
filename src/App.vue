@@ -5,9 +5,9 @@
                 <div class="col-2">
                     <nav>
                         <ul>
-                            <li><router-link to="/" class="col">Home</router-link></li>
-                            <li><router-link to="/depression-checklist" class="col">Depression Checklist</router-link></li>
-                            <li><router-link to="/about" class="col">About</router-link></li>
+                            <li><router-link to="/">Home</router-link></li>
+                            <li><router-link to="/depression-checklist">Depression Checklist</router-link></li>
+                            <li><router-link to="/about">About</router-link></li>
                         </ul>
                     </nav>
                 </div>
@@ -65,6 +65,7 @@ nav {
     padding: 30px;
     ul {
         list-style-type: none;
+        padding-left: 0;
     }
     a {
         font-weight: bold;
