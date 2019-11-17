@@ -64,6 +64,7 @@ export default {
     data() {
         return {
             calendarData: {},
+            date: null,
             thoughtsAndFeelingsTotal: 0,
             activitiesAndPersonalRelationshipsTotal: 0,
             physicalSymptomsTotal: 0,
@@ -100,7 +101,21 @@ export default {
             alert('Saved!');
         },
         chooseDate(args){
-            console.log(args);
+            const date = moment(args.date, "D/M/YYYY").format('MMM DD, YYYY');
+            this.date = date;
+            const checklistOnDate = this.savedDepressionCheckList.find((checkList) => checkList.date === date);
+            console.log(checklistOnDate);
+            if (!_.isEmpty(checklistOnDate)) {
+                this.loadChecklist(checklistOnDate);
+            } else if (checklistOnDate === undefined) {
+                this.clearChecklist();
+            }
+        },
+        loadChecklist(depressionChecklistObject) {
+            this.$store.commit('DepressionChecklist/load', depressionChecklistObject);
+        },
+        clearChecklist() {
+            this.$store.commit('DepressionChecklist/clear');
         }
     },
     computed: {
@@ -133,9 +148,6 @@ export default {
                 planOnHarmingYourselfValue: this.$store.get('DepressionChecklist/planOnHarmingYourselfValue')
             }
         },
-        date() {
-            return moment().format('MMM DD, YYYY');
-        },
         total() {
             return this.thoughtsAndFeelingsTotal + this.activitiesAndPersonalRelationshipsTotal + this.physicalSymptomsTotal + this.suicidalUrgesTotal;
         },
@@ -161,17 +173,18 @@ export default {
             if (_.isEmpty(this.savedDepressionCheckList)){
                 return [];
             }
-            return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('M/D/YYYY'));
+            return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('D/M/YYYY'));
         }
     },
     async beforeMount() {
+        this.date =  moment().format('MMM DD, YYYY');
         this.savedDepressionCheckList = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
         if (this.id !== null) {
-            this.$store.commit('DepressionChecklist/clear');
+            this.clearChecklist();
         }
         const todaysChecklist = this.savedDepressionCheckList.find((checklist)=> checklist.date === this.date);
         if (!_.isEmpty(todaysChecklist)) {
-            this.$store.commit('DepressionChecklist/load', todaysChecklist);
+            this.loadChecklist(todaysChecklist);
         }
     }
 
