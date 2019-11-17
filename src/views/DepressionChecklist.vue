@@ -97,6 +97,7 @@ export default {
                 this.savedDepressionCheckList.push(depressionChecklist.depressionChecklist);
             }
             await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, this.savedDepressionCheckList);
+            alert('Saved!');
         },
         chooseDate(args){
             console.log(args);
