@@ -157,11 +157,21 @@ export default {
             return convertedTotal;
         },
         savedDates() {
+            if (_.isEmpty(this.savedDepressionCheckList)){
+                return [];
+            }
             return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('M/D/YYYY'));
         }
     },
     async beforeMount() {
         this.savedDepressionCheckList = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
+        if (this.id !== null) {
+            this.$store.commit('DepressionChecklist/clear');
+        }
+        const todaysChecklist = this.savedDepressionCheckList.find((checklist)=> checklist.date === this.date);
+        if (!_.isEmpty(todaysChecklist)) {
+            this.$store.commit('DepressionChecklist/load', todaysChecklist);
+        }
     }
 
 }
