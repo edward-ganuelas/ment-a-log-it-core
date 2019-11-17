@@ -1,11 +1,23 @@
 <template>
     <div id="app">
-        <div id="nav" class="container">
-        <router-link to="/" class="col">Home</router-link>
-        <router-link to="/depression-checklist" class="col">Depression Checklist</router-link>
-        <router-link to="/about" class="col">About</router-link>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2">
+                    <nav>
+                        <ul>
+                            <li><router-link to="/" class="col">Home</router-link></li>
+                            <li><router-link to="/depression-checklist" class="col">Depression Checklist</router-link></li>
+                            <li><router-link to="/about" class="col">About</router-link></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-10">
+                    <div class="container-fluid">
+                        <router-view/>
+                    </div>
+                </div>
+            </div>
         </div>
-        <router-view/>
     </div>
 </template>
 <script>
@@ -48,9 +60,12 @@ export default {
     color: #2c3e50;
     font-size: 1rem;
 }
-#nav {
+nav {
     text-align: left;
     padding: 30px;
+    ul {
+        list-style-type: none;
+    }
     a {
         font-weight: bold;
         color: #2c3e50;
