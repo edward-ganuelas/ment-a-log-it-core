@@ -6,5 +6,8 @@ module.exports = {
             localeDir: 'locales',
             enableInSFC: false
         }
+    },
+    configureWebpack: {
+        devtool: 'source-map'
     }
 }
