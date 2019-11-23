@@ -31,14 +31,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <FunctionalCalendar
-                            v-model="calendarData"
-                            :config="calendarConfigs"
-                            :markedDates="savedDates"
-                            :isDatePicker="true"
-                            v-on:choseDay="chooseDate"
-                            >
-                            </FunctionalCalendar>
+                            
                         </div>
                     </div>
                 </div>
@@ -54,7 +47,6 @@ import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/Acti
 import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
 import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
 import DepressionChecklist from '@/models/DepressionChecklist';
-import { FunctionalCalendar } from 'vue-functional-calendar';
 import { sync } from 'vuex-pathify'
 import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
@@ -69,20 +61,14 @@ export default {
             activitiesAndPersonalRelationshipsTotal: 0,
             physicalSymptomsTotal: 0,
             suicidalUrgesTotal: 0,
-            savedDepressionCheckList: [],
-            calendarConfigs: {
-                sundayStart: true,
-                dateFormat: 'dd/mm/yyyy',
-                isDateRange: false
-            }
+            savedDepressionCheckList: []
         }
     },
     components: {
         ThoughtsAndFeelings,
         ActivitiesAndPersonalRelationships,
         PhysicalSymptoms,
-        SuicidalUrges,
-        FunctionalCalendar
+        SuicidalUrges
     },
     methods: {
         mutateTotal(key, value) {
