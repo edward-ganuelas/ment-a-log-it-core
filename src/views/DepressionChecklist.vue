@@ -7,21 +7,44 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <p>{{date}}</p>
+            <div class="col-8">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>{{date}}</p>
+                        </div>
+                    </div>
+                    <thoughts-and-feelings v-on:totalUpdate="mutateTotal" />
+                    <activities-and-personal-relationships v-on:totalUpdate="mutateTotal" />
+                    <physical-symptoms v-on:totalUpdate="mutateTotal" />
+                    <suicidal-urges v-on:totalUpdate="mutateTotal" />
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Total: {{total}}</p>
+                            <p>{{convertedTotal}}</p>
+                            <button @click="save">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <FunctionalCalendar
+                            v-model="calendarData"
+                            :config="calendarConfigs"
+                            :markedDates="savedDates"
+                            :isDatePicker="true"
+                            v-on:choseDay="chooseDate"
+                            >
+                            </FunctionalCalendar>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <thoughts-and-feelings v-on:totalUpdate="mutateTotal" />
-        <activities-and-personal-relationships v-on:totalUpdate="mutateTotal" />
-        <physical-symptoms v-on:totalUpdate="mutateTotal" />
-        <suicidal-urges v-on:totalUpdate="mutateTotal" />
-        <div class="row">
-            <div class="col-12">
-                <p>Total: {{total}}</p>
-                <p>{{convertedTotal}}</p>
-                <button @click="save">Save</button>
-            </div>
-        </div>
+        
     </div>
 </template>
 
@@ -31,6 +54,7 @@ import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/Acti
 import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
 import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
 import DepressionChecklist from '@/models/DepressionChecklist';
+import { FunctionalCalendar } from 'vue-functional-calendar';
 import { sync } from 'vuex-pathify'
 import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
@@ -39,17 +63,26 @@ export default {
     name: 'DepressionChecklist',
     data() {
         return {
+            calendarData: {},
+            date: null,
             thoughtsAndFeelingsTotal: 0,
             activitiesAndPersonalRelationshipsTotal: 0,
             physicalSymptomsTotal: 0,
-            suicidalUrgesTotal: 0
+            suicidalUrgesTotal: 0,
+            savedDepressionCheckList: [],
+            calendarConfigs: {
+                sundayStart: true,
+                dateFormat: 'dd/mm/yyyy',
+                isDateRange: false
+            }
         }
     },
     components: {
         ThoughtsAndFeelings,
         ActivitiesAndPersonalRelationships,
         PhysicalSymptoms,
-        SuicidalUrges
+        SuicidalUrges,
+        FunctionalCalendar
     },
     methods: {
         mutateTotal(key, value) {
@@ -58,14 +91,31 @@ export default {
         async save() {
             const depressionChecklist = new DepressionChecklist(this.date, this.depressionChecklistData, this.id);
             this.id = depressionChecklist.id;
-            const depressionChecklistArray = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
-            const arrayIndex = _.findIndex(depressionChecklistArray, (listItem) => listItem.id === this.id);
+            const arrayIndex = _.findIndex(this.savedDepressionCheckList, (listItem) => listItem.id === this.id);
             if (arrayIndex !== -1) {
-                depressionChecklistArray[arrayIndex] = depressionChecklist.depressionChecklist;
+                this.savedDepressionCheckList[arrayIndex] = depressionChecklist.depressionChecklist;
             } else {
-                depressionChecklistArray.push(depressionChecklist.depressionChecklist);
+                this.savedDepressionCheckList.push(depressionChecklist.depressionChecklist);
             }
-            await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, depressionChecklistArray);
+            await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, this.savedDepressionCheckList);
+            alert('Saved!');
+        },
+        chooseDate(args){
+            const date = moment(args.date, "D/M/YYYY").format('MMM DD, YYYY');
+            this.date = date;
+            const checklistOnDate = this.savedDepressionCheckList.find((checkList) => checkList.date === date);
+            console.log(checklistOnDate);
+            if (!_.isEmpty(checklistOnDate)) {
+                this.loadChecklist(checklistOnDate);
+            } else if (checklistOnDate === undefined) {
+                this.clearChecklist();
+            }
+        },
+        loadChecklist(depressionChecklistObject) {
+            this.$store.commit('DepressionChecklist/load', depressionChecklistObject);
+        },
+        clearChecklist() {
+            this.$store.commit('DepressionChecklist/clear');
         }
     },
     computed: {
@@ -98,9 +148,6 @@ export default {
                 planOnHarmingYourselfValue: this.$store.get('DepressionChecklist/planOnHarmingYourselfValue')
             }
         },
-        date() {
-            return moment().format('MMM DD, YYYY');
-        },
         total() {
             return this.thoughtsAndFeelingsTotal + this.activitiesAndPersonalRelationshipsTotal + this.physicalSymptomsTotal + this.suicidalUrgesTotal;
         },
@@ -121,6 +168,23 @@ export default {
                 convertedTotal = this.$t('depressionChecklist.convertedTotal.extremeDepression');
             }
             return convertedTotal;
+        },
+        savedDates() {
+            if (_.isEmpty(this.savedDepressionCheckList)){
+                return [];
+            }
+            return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('D/M/YYYY'));
+        }
+    },
+    async beforeMount() {
+        this.date =  moment().format('MMM DD, YYYY');
+        this.savedDepressionCheckList = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
+        if (this.id !== null) {
+            this.clearChecklist();
+        }
+        const todaysChecklist = this.savedDepressionCheckList.find((checklist)=> checklist.date === this.date);
+        if (!_.isEmpty(todaysChecklist)) {
+            this.loadChecklist(todaysChecklist);
         }
     }
 
