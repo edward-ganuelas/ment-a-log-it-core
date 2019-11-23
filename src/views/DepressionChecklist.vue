@@ -28,17 +28,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <ul>
-                                <li v-for="list in sortedSavedDepressionChecklist" v-bind:key="list.id">
-                                    {{list.date}}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <saved-depression-checklist :list="savedDepressionCheckList" />
             </div>
         </div>
         
@@ -51,6 +41,7 @@ import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/Acti
 import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
 import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
 import DepressionChecklist from '@/models/DepressionChecklist';
+import SavedDepressionChecklist from '@/components/DepressionChecklist/SavedDepressionChecklist';
 import { sync } from 'vuex-pathify'
 import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
@@ -72,7 +63,8 @@ export default {
         ThoughtsAndFeelings,
         ActivitiesAndPersonalRelationships,
         PhysicalSymptoms,
-        SuicidalUrges
+        SuicidalUrges,
+        SavedDepressionChecklist
     },
     methods: {
         mutateTotal(key, value) {
@@ -153,11 +145,6 @@ export default {
                 return [];
             }
             return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('D/M/YYYY'));
-        },
-        sortedSavedDepressionChecklist() {
-            return _.cloneDeep(this.savedDepressionCheckList).sort((a,b) =>{ 
-                return moment(b.date, 'MMM DD, YYYY').valueOf() - moment(a.date, 'MMM DD, YYYY').valueOf();
-            });
         }
     },
     async beforeMount() {
