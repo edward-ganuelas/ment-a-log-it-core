@@ -31,7 +31,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            
+                            <ul>
+                                <li v-for="list in savedDepressionCheckList" v-bind:key="list.id">
+                                    {{list.date}}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
