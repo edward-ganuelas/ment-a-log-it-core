@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-12">
                             <ul>
-                                <li v-for="list in savedDepressionCheckList" v-bind:key="list.id">
+                                <li v-for="list in sortedSavedDepressionChecklist" v-bind:key="list.id">
                                     {{list.date}}
                                 </li>
                             </ul>
@@ -89,17 +89,6 @@ export default {
             }
             await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, this.savedDepressionCheckList);
             alert('Saved!');
-        },
-        chooseDate(args){
-            const date = moment(args.date, "D/M/YYYY").format('MMM DD, YYYY');
-            this.date = date;
-            const checklistOnDate = this.savedDepressionCheckList.find((checkList) => checkList.date === date);
-            console.log(checklistOnDate);
-            if (!_.isEmpty(checklistOnDate)) {
-                this.loadChecklist(checklistOnDate);
-            } else if (checklistOnDate === undefined) {
-                this.clearChecklist();
-            }
         },
         loadChecklist(depressionChecklistObject) {
             this.$store.commit('DepressionChecklist/load', depressionChecklistObject);
@@ -164,6 +153,11 @@ export default {
                 return [];
             }
             return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('D/M/YYYY'));
+        },
+        sortedSavedDepressionChecklist() {
+            return _.cloneDeep(this.savedDepressionCheckList).sort((a,b) =>{ 
+                return moment(b.date, 'MMM DD, YYYY').valueOf() - moment(a.date, 'MMM DD, YYYY').valueOf();
+            });
         }
     },
     async beforeMount() {
