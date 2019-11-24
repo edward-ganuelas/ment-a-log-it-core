@@ -99,6 +99,7 @@ export default {
                 cryingSpellsValue: this.$store.get('DepressionChecklist/cryingSpellsValue'),
                 feelingDiscouragedValue: this.$store.get('DepressionChecklist/feelingDiscouragedValue'),
                 feelingHopelessValue: this.$store.get('DepressionChecklist/feelingHopelessValue'),
+                feelingUnhappyOrBlueValue: this.$store.get('DepressionChecklist/feelingUnhappyOrBlueValue'),
                 lowSelfEsteemValue: this.$store.get('DepressionChecklist/lowSelfEsteemValue'),
                 feelingWorthlessOrInadequateValue: this.$store.get('DepressionChecklist/feelingWorthlessOrInadequateValue'),
                 guiltOrShameValue: this.$store.get('DepressionChecklist/guiltOrShameValue'),
