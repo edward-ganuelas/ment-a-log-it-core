@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <saved-depression-checklist :list="savedDepressionCheckList" />
+                <saved-depression-checklist :list="savedDepressionCheckList" v-on:dateClicked="loadFromId"/>
             </div>
         </div>
         
@@ -47,6 +47,7 @@ import { sync } from 'vuex-pathify'
 import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
 import _ from 'lodash';
+
 export default {
     name: 'DepressionChecklist',
     data() {
@@ -83,6 +84,10 @@ export default {
             }
             await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, this.savedDepressionCheckList);
             alert('Saved!');
+        },
+        loadFromId(id) {
+            const depressionChecklist = this.savedDepressionCheckList.find(checklist => checklist.id === id);
+            this.loadChecklist(depressionChecklist);
         },
         loadChecklist(depressionChecklistObject) {
             this.$store.commit('DepressionChecklist/load', depressionChecklistObject);
