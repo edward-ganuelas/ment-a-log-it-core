@@ -7,20 +7,31 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <p>{{date}}</p>
+            <div class="col-8">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>{{date}}</p>
+                        </div>
+                    </div>
+                    <thoughts-and-feelings v-on:totalUpdate="mutateTotal" />
+                    <activities-and-personal-relationships v-on:totalUpdate="mutateTotal" />
+                    <physical-symptoms v-on:totalUpdate="mutateTotal" />
+                    <suicidal-urges v-on:totalUpdate="mutateTotal" />
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Total: {{total}}</p>
+                            <converted-total :total="total" />
+                            <button @click="save">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <saved-depression-checklist :list="savedDepressionCheckList" v-on:dateClicked="loadFromId"/>
             </div>
         </div>
-        <thoughts-and-feelings v-on:totalUpdate="mutateTotal" />
-        <activities-and-personal-relationships v-on:totalUpdate="mutateTotal" />
-        <physical-symptoms v-on:totalUpdate="mutateTotal" />
-        <suicidal-urges v-on:totalUpdate="mutateTotal" />
-        <div class="row">
-            <div class="col-12">
-                <p>Total: {{total}}</p>
-                <p>{{convertedTotal}}</p>
-            </div>
-        </div>
+        
     </div>
 </template>
 
@@ -29,53 +40,113 @@ import ThoughtsAndFeelings from '@/views/DepressionChecklist/ThoughtsAndFeelings
 import ActivitiesAndPersonalRelationships from '@/views/DepressionChecklist/ActivitiesAndPersonalRelationships';
 import PhysicalSymptoms from '@/views/DepressionChecklist/PhysicalSymptoms';
 import SuicidalUrges from '@/views/DepressionChecklist/SuicidalUrges';
+import DepressionChecklist from '@/models/DepressionChecklist';
+import SavedDepressionChecklist from '@/components/DepressionChecklist/SavedDepressionChecklist';
+import ConvertedTotal from '@/components/DepressionChecklist/ConvertedTotal';
+import { sync } from 'vuex-pathify'
+import persistedStore, { STORE_KEYS } from '@/localforage';
 import moment from 'moment';
 import _ from 'lodash';
+
 export default {
     name: 'DepressionChecklist',
     data() {
         return {
+            calendarData: {},
+            date: null,
             thoughtsAndFeelingsTotal: 0,
             activitiesAndPersonalRelationshipsTotal: 0,
             physicalSymptomsTotal: 0,
-            suicidalUrgesTotal: 0
+            suicidalUrgesTotal: 0,
+            savedDepressionCheckList: []
         }
     },
     components: {
         ThoughtsAndFeelings,
         ActivitiesAndPersonalRelationships,
         PhysicalSymptoms,
-        SuicidalUrges
+        SuicidalUrges,
+        SavedDepressionChecklist,
+        ConvertedTotal
     },
     methods: {
         mutateTotal(key, value) {
             this[key] = value;
+        },
+        async save() {
+            const depressionChecklist = new DepressionChecklist(this.date, this.depressionChecklistData, this.id);
+            this.id = depressionChecklist.id;
+            const arrayIndex = _.findIndex(this.savedDepressionCheckList, (listItem) => listItem.id === this.id);
+            if (arrayIndex !== -1) {
+                this.savedDepressionCheckList[arrayIndex] = depressionChecklist.depressionChecklist;
+            } else {
+                this.savedDepressionCheckList.push(depressionChecklist.depressionChecklist);
+            }
+            await persistedStore.setItem(STORE_KEYS.DEPRESSION_CHECKLISTS, this.savedDepressionCheckList);
+            alert('Saved!');
+        },
+        loadFromId(id) {
+            const depressionChecklist = this.savedDepressionCheckList.find(checklist => checklist.id === id);
+            this.date =  moment(depressionChecklist.date, 'MMM DD, YYY').format('MMM DD, YYYY');
+            this.loadChecklist(depressionChecklist);
+        },
+        loadChecklist(depressionChecklistObject) {
+            this.$store.commit('DepressionChecklist/load', depressionChecklistObject);
+        },
+        clearChecklist() {
+            this.$store.commit('DepressionChecklist/clear');
         }
     },
     computed: {
-        date() {
-            return moment().format('MMM DD, YYYY');
+        id: sync('DepressionChecklist/id'),
+        depressionChecklistData() {
+            return {
+                feelingSadOrDownInTheDumpsValue: this.$store.get('DepressionChecklist/feelingSadOrDownInTheDumpsValue'),
+                cryingSpellsValue: this.$store.get('DepressionChecklist/cryingSpellsValue'),
+                feelingDiscouragedValue: this.$store.get('DepressionChecklist/feelingDiscouragedValue'),
+                feelingHopelessValue: this.$store.get('DepressionChecklist/feelingHopelessValue'),
+                feelingUnhappyOrBlueValue: this.$store.get('DepressionChecklist/feelingUnhappyOrBlueValue'),
+                lowSelfEsteemValue: this.$store.get('DepressionChecklist/lowSelfEsteemValue'),
+                feelingWorthlessOrInadequateValue: this.$store.get('DepressionChecklist/feelingWorthlessOrInadequateValue'),
+                guiltOrShameValue: this.$store.get('DepressionChecklist/guiltOrShameValue'),
+                criticizingYourselfValue: this.$store.get('DepressionChecklist/criticizingYourselfValue'),
+                difficultyMakingDecisionsValue: this.$store.get('DepressionChecklist/difficultyMakingDecisionsValue'),
+                lossOfInterestInFamilyFriendsValue: this.$store.get('DepressionChecklist/lossOfInterestInFamilyFriendsValue'),
+                lonelinessValue: this.$store.get('DepressionChecklist/lonelinessValue'),
+                spendingLessTimeWithFamilyValue: this.$store.get('DepressionChecklist/spendingLessTimeWithFamilyValue'),
+                lossOfMotivationValue: this.$store.get('DepressionChecklist/lossOfMotivationValue'),
+                lossOfInterestInWorkOrOtherActivitiesValue: this.$store.get('DepressionChecklist/lossOfInterestInWorkOrOtherActivitiesValue'),
+                avoidingWorkOrOtherActivitiesValue: this.$store.get('DepressionChecklist/avoidingWorkOrOtherActivitiesValue'),
+                lossOfPleasureOrSatisfactionValue: this.$store.get('DepressionChecklist/lossOfPleasureOrSatisfactionValue'),
+                feelingTiredValue: this.$store.get('DepressionChecklist/feelingTiredValue'),
+                difficultySleepingOrSleepingTooMuchValue: this.$store.get('DepressionChecklist/difficultySleepingOrSleepingTooMuchValue'),
+                decreasedOrIncreasedAppetiteValue: this.$store.get('DepressionChecklist/decreasedOrIncreasedAppetiteValue'),
+                lossOfInterestInSexValue: this.$store.get('DepressionChecklist/lossOfInterestInSexValue'),
+                worryingAboutYourHealthValue: this.$store.get('DepressionChecklist/worryingAboutYourHealthValue'),
+                suicidalThoughtsValue: this.$store.get('DepressionChecklist/suicidalThoughtsValue'),
+                endYourLifeValue: this.$store.get('DepressionChecklist/endYourLifeValue'),
+                planOnHarmingYourselfValue: this.$store.get('DepressionChecklist/planOnHarmingYourselfValue')
+            }
         },
         total() {
             return this.thoughtsAndFeelingsTotal + this.activitiesAndPersonalRelationshipsTotal + this.physicalSymptomsTotal + this.suicidalUrgesTotal;
         },
-        convertedTotal() {
-            const total = _.clone(this.total);
-            let convertedTotal = '';
-            if (total >= 0 && total <= 5) {
-                convertedTotal = this.$t('depressionChecklist.convertedTotal.noDepression');
-            } else if (total > 5 && total <= 10) {
-                convertedTotal = this.$t('depressionChecklist.convertedTotal.normalButUnhappy');
-            } else if (total > 10 && total <= 25) {
-                convertedTotal = this.$t('depressionChecklist.convertedTotal.mildDepression');
-            } else if (total > 25 && total <= 50) {
-                convertedTotal = this.$t('depressionChecklist.convertedTotal.moderateDepresion');
-            } else if (total > 50 && total <= 75) {
-                convertedTotal = this.$t('depressionChecklist.convertedTotal.severeDepression');
-            } else if (total > 75 ) {
-                convertedTotal = this.$t('depressionChecklist.convertedTotal.extremeDepression');
+        savedDates() {
+            if (_.isEmpty(this.savedDepressionCheckList)){
+                return [];
             }
-            return convertedTotal;
+            return this.savedDepressionCheckList.map(checkList => moment(checkList.date, 'MMM DD, YYYY').format('D/M/YYYY'));
+        }
+    },
+    async beforeMount() {
+        this.date =  moment().format('MMM DD, YYYY');
+        this.savedDepressionCheckList = await persistedStore.getItem(STORE_KEYS.DEPRESSION_CHECKLISTS);
+        if (this.id !== null) {
+            this.clearChecklist();
+        }
+        const todaysChecklist = this.savedDepressionCheckList.find((checklist)=> checklist.date === this.date);
+        if (!_.isEmpty(todaysChecklist)) {
+            this.loadChecklist(todaysChecklist);
         }
     }
 

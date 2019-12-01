@@ -1,6 +1,6 @@
-# Mental Health Toolkit
+# Ment-a-log-it Core
 
-A collection of web components based on David Burns' Techniques to help deal with depression. Written on Vue.js
+Core application for the Ment-a-log-it App.
 
 ## Project setup
 ```

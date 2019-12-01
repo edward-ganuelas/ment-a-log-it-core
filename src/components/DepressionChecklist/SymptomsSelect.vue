@@ -33,6 +33,12 @@ export default {
         }
         
     },
+    watch: {
+        selected(newValue) {
+            this.value = newValue;
+            this.$emit('change', this.value, this.keyName)
+        }
+    },
     beforeMount() {
         this.value = _.cloneDeep(this.selected);
     }
